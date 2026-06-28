@@ -1,0 +1,53 @@
+input,
+.search-field,
+select,
+.select,
+textarea {
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0.5em;
+  box-shadow: var(--box-shadow);
+
+  &.input-email,
+  &.input-password,
+  &.input-username,
+  &.input-name {
+    min-width: 14rem;
+    min-height: 2.25rem;
+  }
+
+  &.input-phone {
+    min-width: 12rem;
+    min-height: 2.25rem;
+  }
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='tel'] {
+  font-size: 1rem;
+}
+
+textarea {
+  min-height: 6rem;
+  height: fit-content;
+  overflow: hidden;
+}
+
+input[type='checkbox'] {
+  cursor: pointer;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+label {
+  display: block;
+  text-align: left;
+  margin: 0.25rem;
+}
+
+.input-error {
+  color: red;
+}

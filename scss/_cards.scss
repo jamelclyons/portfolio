@@ -1,0 +1,14 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  height: fit-content;
+  width: fit-content;
+  max-width: 1000px;
+  padding: 0.75rem;
+  opacity: 0.85;
+  background-color: var(--card-background-color);
+  color: var(--card-color);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+}

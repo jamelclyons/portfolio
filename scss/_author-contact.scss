@@ -1,0 +1,23 @@
+.author-contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  a {
+    i {
+      color: var(--button-color);
+    }
+  }
+  
+  button {
+    background-color: white;
+    width: fit-content;
+    padding: 0;
+    margin: 0;
+
+    i {
+      color: black;
+    }
+  }
+}

@@ -1,0 +1,1 @@
+<p>Redux does not work well with classes at this time; however, types do. I created a type for data going to and from the database.</p>

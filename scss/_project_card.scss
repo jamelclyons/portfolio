@@ -1,0 +1,14 @@
+@use '_gallery.scss';
+@use '_project_description.scss';
+@use '_project_status.scss';
+@use '_project_skills_bar.scss';
+
+.project-card {
+  align-items: center;
+
+  h2 {
+    text-align: center;
+    text-transform: uppercase;
+    word-wrap: break-word;
+  }
+}

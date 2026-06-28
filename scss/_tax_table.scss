@@ -1,0 +1,18 @@
+@use './_icon.scss';
+
+table {
+  tbody {
+    tr {
+      td {
+        .icon {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+        }
+        h3 {
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}

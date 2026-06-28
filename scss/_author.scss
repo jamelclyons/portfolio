@@ -1,0 +1,51 @@
+@use '_author-contact.scss';
+
+section.author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  margin: 6rem 0;
+  flex-wrap: wrap;
+
+  div.author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+    flex-wrap: wrap;
+
+    .author-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+
+      .author-roles-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+        gap: 1.5rem;
+
+        .title {
+          padding: 0.5em;
+        }
+
+        h4:not(:last-child)::after {
+          content: '|';
+          position: absolute;
+          padding: 0 1rem;
+        }
+      }
+    }
+
+    .author-bio {
+      width: fit-content;
+    }
+  }
+}

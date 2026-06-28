@@ -1,0 +1,16 @@
+@use './_author_info.scss';
+@use './_author_knowledge.scss';
+
+.author-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+
+  .author-pic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

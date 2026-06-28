@@ -1,0 +1,19 @@
+@use './_message-card.scss';
+@use './_tax_table.scss';
+
+div.technologies {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin: 6rem 0;
+
+  section#seven_tech_communications {
+    main.technologies {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+}

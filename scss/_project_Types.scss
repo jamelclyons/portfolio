@@ -1,0 +1,26 @@
+@use '_tax_table.scss';
+@use '_portfolio.scss';
+
+section {
+
+  main.project-types {
+    margin: 5rem 0;
+    gap: 1.5rem;
+
+    .title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+
+      i {
+        font-size: 4rem;
+      }
+
+      img {
+        width: auto;
+        height: 4rem;
+      }
+    }
+  }
+}

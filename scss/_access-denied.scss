@@ -1,0 +1,16 @@
+.access-denied {
+  height: 100vh;
+
+  main {
+    justify-content: center;
+    height: 100%;
+
+    .status-bar.card.error {
+      background-color: red;
+
+      .title {
+        color: white;
+      }
+    }
+  }
+}

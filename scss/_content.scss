@@ -1,0 +1,21 @@
+@use '_paragraph.scss';
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+
+  .content-html {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+
+    a {
+      font-weight: 700;
+    }
+  }
+}

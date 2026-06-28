@@ -1,0 +1,30 @@
+@use '_author-pic.scss';
+@use '_author-contact.scss';
+
+.author-card.card {
+  background-color: var(--card-background-color-secondary);
+  color: var(--card-color-secondary);
+  gap: 0.374rem;
+  height: fit-content;
+  width: fit-content;
+  padding: 0;
+
+  img {
+    box-shadow: unset;
+    max-width: 50vw;
+  }
+
+  .title {
+    padding: 0.75em;
+  }
+
+  .author-contact .contact-bar {
+    padding: 0 1rem 1rem;
+
+    a {
+      i {
+        color: var(--card-color-secondary);
+      }
+    }
+  }
+}

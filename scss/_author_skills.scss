@@ -1,0 +1,27 @@
+:root {
+  --total-skills: 7;
+  --icon-width: 12rem;
+  --animation-duration: calc(var(--total-skills) * 1.5s);
+}
+
+.author-skills {
+  display: flex;
+  width: 100%;
+}
+
+.author-skills-slide {
+  display: flex;
+  animation: var(--animation-duration) slide infinite linear;
+}
+
+.author-skills-slide i {
+  font-size: 4rem;
+  padding: 0;
+  width: var(--icon-width)
+}
+
+@keyframes slide {
+  100% {
+      transform: translateX(calc(-100% / 2));
+  }
+}

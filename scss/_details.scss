@@ -1,0 +1,33 @@
+details {
+  box-shadow: var(--box-shadow);
+  padding: 1rem;
+
+  summary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.5rem;
+    margin-right: -0.5rem;
+    font-weight: 575;
+    font-family: var(--heading-font);
+    font-size: 1.25rem;
+  }
+
+  summary::after {
+    content: '\25BA';
+    margin-left: 5px;
+  }
+
+  summary::after {
+    display: none;
+  }
+
+  .post-category {
+    padding: 0.375rem 0;
+  }
+}
+
+details:hover{
+    cursor: pointer;
+
+}

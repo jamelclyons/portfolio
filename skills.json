@@ -1,0 +1,625 @@
+    [
+        {
+            "id": "application",
+            "type": "project_type",
+            "title": "Application",
+            "path": "project-type",
+            "image": {
+                "id": "application",
+                "title": "Application",
+                "url": "",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "package",
+            "type": "project_type",
+            "title": "Package",
+            "path": "project-type",
+            "image": {
+                "id": "package",
+                "title": "Package",
+                "url": "",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "plugin",
+            "type": "project_type",
+            "title": "Plugin",
+            "path": "project-type",
+            "image": {
+                "id": "plugin",
+                "title": "Plugin",
+                "url": "",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "theme",
+            "type": "project_type",
+            "title": "Theme",
+            "path": "project-type",
+            "image": {
+                "id": "theme",
+                "title": "Theme",
+                "url": "",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "platform",
+            "type": "project_type",
+            "title": "platform",
+            "path": "project-type",
+            "image": {
+                "id": "platform",
+                "title": "platform",
+                "url": "",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "cicd",
+            "type": "project_type",
+            "title": "CI/CD",
+            "path": "project-type",
+            "image": {
+                "id": "cicd",
+                "title": "Continuous Integration/Continuous Deployment",
+                "url": "",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "api",
+            "type": "project_type",
+            "title": "API",
+            "path": "project-type",
+            "image": {
+                "id": "api",
+                "title": "Application Programming Interface",
+                "url": "",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "css",
+            "type": "language",
+            "title": "CSS",
+            "path": "language",
+            "image": {
+                "id": "css",
+                "title": "CSS",
+                "url": "https://skillicons.dev/icons?i=css",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "hack",
+            "type": "language",
+            "title": "Hack",
+            "path": "language",
+            "image": {
+                "id": "hack",
+                "title": "Hack",
+                "url": "https://hacklang.org/img/hack.svg",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "html",
+            "type": "language",
+            "title": "HTML",
+            "path": "language",
+            "image": {
+                "id": "html",
+                "title": "HTML",
+                "url": "https://skillicons.dev/icons?i=html",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "java",
+            "type": "language",
+            "title": "Java",
+            "path": "language",
+            "image": {
+                "id": "java",
+                "title": "Java",
+                "url": "https://skillicons.dev/icons?i=java",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "javascript",
+            "type": "language",
+            "title": "JavaScript",
+            "path": "language",
+            "image": {
+                "id": "javascript",
+                "title": "JavaScript",
+                "url": "https://skillicons.dev/icons?i=javascript",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "jquery",
+            "type": "language",
+            "title": "jQuery",
+            "path": "language",
+            "image": {
+                "id": "jquery",
+                "title": "jQuery",
+                "url": "https://skillicons.dev/icons?i=jquery",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "mysql",
+            "type": "database",
+            "title": "MySQL",
+            "path": "database",
+            "image": {
+                "id": "mysql",
+                "title": "MySQL",
+                "url": "https://skillicons.dev/icons?i=mysql",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "php",
+            "type": "language",
+            "title": "PHP",
+            "path": "language",
+            "image": {
+                "id": "php",
+                "title": "PHP",
+                "url": "https://skillicons.dev/icons?i=php",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "python",
+            "type": "language",
+            "title": "Python",
+            "path": "language",
+            "image": {
+                "id": "python",
+                "title": "Python",
+                "url": "https://skillicons.dev/icons?i=python",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "shell",
+            "type": "language",
+            "title": "PowerShell",
+            "path": "language",
+            "image": {
+                "id": "shell",
+                "title": "PowerShell",
+                "url": "https://skillicons.dev/icons?i=powershell",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "swift",
+            "type": "language",
+            "title": "Swift",
+            "path": "language",
+            "image": {
+                "id": "swift",
+                "title": "Swift",
+                "url": "https://skillicons.dev/icons?i=swift",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "typescript",
+            "type": "language",
+            "title": "TypeScript",
+            "path": "language",
+            "image": {
+                "id": "typescript",
+                "title": "TypeScript",
+                "url": "https://skillicons.dev/icons?i=typescript",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "angular",
+            "type": "framework",
+            "title": "Angular",
+            "path": "framework",
+            "image": {
+                "id": "angular",
+                "title": "Angular",
+                "url": "https://skillicons.dev/icons?i=angular",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "react",
+            "type": "framework",
+            "title": "React",
+            "path": "framework",
+            "image": {
+                "id": "react",
+                "title": "React",
+                "url": "https://skillicons.dev/icons?i=react",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "redux",
+            "type": "framework",
+            "title": "Redux",
+            "path": "framework",
+            "image": {
+                "id": "redux",
+                "title": "Redux",
+                "url": "https://skillicons.dev/icons?i=redux",
+                "class_name": ""
+            },
+            "icon_url": "https://skillicons.dev/icons?i=redux",
+            "class_name": "",
+            "usage": 0
+        },
+        {
+            "id": "spring",
+            "type": "framework",
+            "title": "Spring Boot",
+            "path": "framework",
+            "image": {
+                "id": "spring",
+                "title": "Spring Boot",
+                "url": "https://skillicons.dev/icons?i=spring",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "adobe-illustrator",
+            "type": "software",
+            "title": "Adobe Illustrator",
+            "path": "software",
+            "image": {
+                "id": "adobe-illustrator",
+                "title": "Adobe Illustrator",
+                "url": "https://skillicons.dev/icons?i=ai",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "adobe-photoshop",
+            "type": "software",
+            "title": "Adobe Photoshop",
+            "path": "software",
+            "image": {
+                "id": "adobe-photoshop",
+                "title": "Adobe Photoshop",
+                "url": "https://skillicons.dev/icons?i=photoshop",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "adobe-xd",
+            "type": "software",
+            "title": "Adobe XD",
+            "path": "software",
+            "image": {
+                "id": "adobe-xd",
+                "title": "Adobe XD",
+                "url": "https://skillicons.dev/icons?i=xd",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "docker",
+            "type": "cicd",
+            "title": "Docker",
+            "path": "cicd",
+            "image": {
+                "id": "docker",
+                "title": "Docker",
+                "url": "https://skillicons.dev/icons?i=docker",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "express",
+            "type": "framework",
+            "title": "Express",
+            "path": "framework",
+            "image": {
+                "id": "express",
+                "title": "Express",
+                "url": "https://skillicons.dev/icons?i=express",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "figma",
+            "type": "software",
+            "title": "Figma",
+            "path": "software",
+            "image": {
+                "id": "figma",
+                "title": "Figma",
+                "url": "https://skillicons.dev/icons?i=figma",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "jenkins",
+            "type": "cicd",
+            "title": "Jenkins",
+            "path": "cicd",
+            "image": {
+                "id": "jenkins",
+                "title": "Jenkins",
+                "url": "https://skillicons.dev/icons?i=jenkins",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "kafka",
+            "type": "technology",
+            "title": "Kafka",
+            "path": "technology",
+            "image": {
+                "id": "kafka",
+                "title": "Kafka",
+                "url": "https://skillicons.dev/icons?i=kafka",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "kubernetes",
+            "type": "platform",
+            "title": "Kubernetes",
+            "path": "platform",
+            "image": {
+                "id": "kubernetes",
+                "title": "Kubernetes",
+                "url": "https://skillicons.dev/icons?i=kubernetes",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "maven",
+            "type": "builder",
+            "title": "Maven",
+            "path": "builder",
+            "image": {
+                "id": "maven",
+                "title": "Maven",
+                "url": "https://skillicons.dev/icons?i=maven",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "nginx",
+            "type": "server",
+            "title": "NGINX",
+            "path": "server",
+            "image": {
+                "id": "nginx",
+                "title": "NGINX",
+                "url": "https://skillicons.dev/icons?i=nginx",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "nginx-proxy-manager",
+            "type": "server",
+            "title": "NGINX Proxy Manager",
+            "path": "server",
+            "image": {
+                "id": "nginx-proxy-manager",
+                "title": "NGINX Proxy Manager",
+                "url": "https://nginxproxymanager.com/logo.svg",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "postman",
+            "type": "software",
+            "title": "Postman",
+            "path": "software",
+            "image": {
+                "id": "postman",
+                "title": "Postman",
+                "url": "https://skillicons.dev/icons?i=postman",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "redis",
+            "type": "database",
+            "title": "Redis",
+            "path": "database",
+            "image": {
+                "id": "redis",
+                "title": "Redis",
+                "url": "https://skillicons.dev/icons?i=redis",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "sass",
+            "type": "builder",
+            "title": "Sass",
+            "path": "builder",
+            "image": {
+                "id": "sass",
+                "title": "Sass",
+                "url": "https://skillicons.dev/icons?i=sass",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "selenium",
+            "type": "cicd",
+            "title": "Selenium",
+            "path": "cicd",
+            "image": {
+                "id": "selenium",
+                "title": "Selenium",
+                "url": "https://skillicons.dev/icons?i=selenium",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "sqlite",
+            "type": "database",
+            "title": "SQLite",
+            "path": "database",
+            "image": {
+                "id": "sqlite",
+                "title": "SQLite",
+                "url": "https://skillicons.dev/icons?i=sqlite",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "vite",
+            "type": "builder",
+            "title": "Vite",
+            "path": "builder",
+            "image": {
+                "id": "vite",
+                "title": "Vite",
+                "url": "https://skillicons.dev/icons?i=vite",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "webpack",
+            "type": "builder",
+            "title": "Webpack",
+            "path": "builder",
+            "image": {
+                "id": "webpack",
+                "title": "Webpack",
+                "url": "https://skillicons.dev/icons?i=webpack",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "wordpress",
+            "type": "platform",
+            "title": "WordPress",
+            "path": "platform",
+            "image": {
+                "id": "wordpress",
+                "title": "WordPress",
+                "url": "https://skillicons.dev/icons?i=wordpress",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "nodejs",
+            "type": "platform",
+            "title": "NodeJS",
+            "path": "platform",
+            "image": {
+                "id": "nodejs",
+                "title": "NodeJS",
+                "url": "https://skillicons.dev/icons?i=nodejs",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "graphql",
+            "type": "database",
+            "title": "GraphQL",
+            "path": "database",
+            "image": {
+                "id": "graphql",
+                "title": "GraphQL",
+                "url": "https://skillicons.dev/icons?i=graphql",
+                "class_name": ""
+            },
+            "usage": 0
+        },
+        {
+            "id": "firebase",
+            "type": "platform",
+            "title": "Firebase",
+            "path": "platform",
+            "image": {
+                "id": "firebase",
+                "title": "Firebase",
+                "url": "https://skillicons.dev/icons?i=firebase",
+                "class_name": ""
+            }
+        },
+        {
+            "id": "github",
+            "type": "cicd",
+            "title": "GitHub",
+            "path": "cicd",
+            "image": {
+                "id": "github",
+                "title": "GitHub",
+                "url": "https://skillicons.dev/icons?i=github",
+                "class_name": ""
+            }
+        },
+        {
+            "id": "github-actions",
+            "type": "cicd",
+            "title": "GitHub Actions",
+            "path": "cicd",
+            "image": {
+                "id": "github-actions",
+                "title": "GitHub Actions",
+                "url": "https://skillicons.dev/icons?i=githubactions",
+                "class_name": ""
+            }
+        }
+    ]

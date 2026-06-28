@@ -1,0 +1,12 @@
+.update {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+#update_skills {
+  .form-item-flex {
+    margin-left: 2rem;
+  }
+}

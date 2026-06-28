@@ -1,0 +1,8 @@
+{
+	"name": "Personal Portfolio",
+	"dockerComposeFile": [
+		"docker-compose.yaml"
+	],
+	"service": "dev-website",
+	"workspaceFolder": "/app"
+}

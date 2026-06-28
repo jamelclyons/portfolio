@@ -1,0 +1,65 @@
+.checklist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+
+  .task,
+  .sub-task {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .task {
+    input[type='checkbox'] {
+      appearance: none;
+      width: 1.5rem;
+      height: 1.5rem;
+      border: 2px solid gray;
+      background-color: white;
+      cursor: pointer;
+      position: relative;
+    }
+
+    input[type='checkbox']:checked::after {
+      content: '✔'; /* Custom checkmark */
+      font-size: 1.25rem;
+      color: white;
+      position: absolute;
+      top: 0;
+      left: 2px;
+    }
+
+    input[type='checkbox']:checked {
+      background-color: green;
+      border-color: darkgreen;
+    }
+
+    input[type='checkbox']:disabled {
+      cursor: not-allowed;
+    }
+
+    input[type='checkbox']:disabled:checked::after {
+      color: white; /* Keep the checkmark visible */
+    }
+  }
+
+  .sub-task {
+    margin-left: 2.5rem;
+  }
+}
+
+a.task-details h5 {
+  font-weight: 700;
+}
+
+.task-row {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}

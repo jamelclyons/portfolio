@@ -1,0 +1,58 @@
+.hamburger {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  right: 2rem;
+
+  h1 {
+    position: absolute;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    transform: rotate(90deg);
+    animation: hamburger 1.5s ease-in alternate;
+  }
+
+  .top {
+    &.not-active {
+      opacity: 0;
+      animation: none;
+    }
+  }
+
+  .middle {
+    &.not-active {
+      opacity: 0;
+      animation: none;
+    }
+  }
+
+  .bottom {
+    bottom: 0;
+
+    &.not-active {
+      opacity: 0;
+      animation: none;
+    }
+  }
+
+  h1.close {
+    font-family: Roboto;
+    opacity: 0;
+    transform: none;
+    animation: none;
+    color: red;
+
+    &.is-active {
+      opacity: 1;
+      animation: hamburger 1.5s infinite alternate;
+    }
+  }
+
+  .right-menu {
+    display: none;
+  }
+}

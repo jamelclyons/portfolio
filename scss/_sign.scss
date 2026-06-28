@@ -1,0 +1,72 @@
+button.sign {
+  padding: 0.25em;
+  box-shadow: var(--orb-box-shadow-btn);
+  animation: sign 2s infinite alternate;
+}
+
+button.sign:hover {
+  box-shadow: none;
+
+  &.start-sign {
+    i {
+      color: green;
+    }
+
+    h2,
+    h3 {
+      color: green;
+    }
+  }
+
+  &.enter-sign {
+    background-color: green;
+    border: 0.25em solid white;
+    h2,
+    h3 {
+      color: white;
+    }
+  }
+
+  &.exit-sign {
+    background-color: white;
+    border: 0.25em solid red;
+    h2,
+    h3 {
+      color: red;
+    }
+  }
+}
+
+@keyframes start {
+  0% {
+    background-color: black;
+  }
+
+  100% {
+    background-color: green;
+    color: white;
+    border: 0.25em solid white;
+  }
+}
+
+@keyframes enter {
+  0% {
+    background-color: black;
+  }
+
+  100% {
+    background-color: green;
+  }
+}
+
+@keyframes exit {
+  0% {
+    background-color: black;
+  }
+
+  100% {
+    background-color: red;
+    color: white;
+    border: 0.25em solid white;
+  }
+}

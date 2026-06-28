@@ -1,0 +1,50 @@
+:root {
+  font-size: 12px;
+  --heading-font: 'Times New Roman', Times, serif;
+  --body-font: Helvetica;
+
+  --button-background-color: black;
+  --button-color: white;
+  --button-background-color-secondary: white;
+  --button-color-secondary: black;
+  --button-border-radius: 1.25rem;
+  
+  --border-radius: 0.5rem;
+  --box-shadow: 4px 4px 10px gray;
+  --header-background-color: white;
+  --scroll-margin: 6rem;
+
+  --card-background-color: white;
+  --card-color: black;
+  --card-background-color-secondary: black;
+  --card-color-secondary: white;
+
+  --color-info: blue;
+  --color-caution: yellow;
+  --color-error: red;
+  --color-success: green;
+  --color-primary: white;
+  --color-secondary: black;
+  --color-text: black;
+
+  --opacity: 1;
+
+  --user-card-background-color: black;
+  --user-card-color: white;
+  --user-card-background-color-secondary: white;
+  --user-card-color-secondary: black;
+  
+  --footer-background-color: white;
+}
+
+@media (min-width: 480px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    font-size: 16px;
+  }
+}

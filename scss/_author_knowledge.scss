@@ -1,0 +1,62 @@
+:root {
+  --total-skills: 7;
+  --icon-width: 4rem;
+  --icon-gap: 2rem;
+  --total-width: 42rem;
+  --animation-duration: 21s;
+}
+
+.author-knowledge {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+  width: 100%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  .author-knowledge-slide {
+    display: flex;
+    gap: 2rem;
+    padding-left: 2rem;
+    width: 100%;
+    animation: slide infinite var(--animation-duration) linear;
+    animation-direction: alternate;
+
+    &:hover {
+      animation: none;
+      animation-play-state: paused;
+    }
+
+    .icon {
+      padding: 0;
+      width: var(--icon-width);
+  
+      i {
+        font-size: 4rem;
+      }
+  
+      img {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 0.85rem;
+      }
+    }
+  }
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(var(--total-width) * -1));
+  }
+}

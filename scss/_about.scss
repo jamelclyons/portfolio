@@ -1,0 +1,96 @@
+@use './_content.scss';
+@use './_cards.scss';
+@use './error_page.scss';
+@use './_author.scss';
+@use './organizations';
+@use './_badge.scss';
+
+.mission-statement-card.card {
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0.5em;
+  width: fit-content;
+  background-color: black;
+
+  h3 {
+    color: white;
+  }
+}
+
+.about {
+  .stats,
+  .stats-user,
+  .stats-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: space-evenly;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .stats-bar {
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .stats {
+    flex-wrap: wrap;
+  }
+
+  .stats-user {
+    flex-direction: column;
+
+    .author-pic {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+      }
+    }
+  }
+
+  #skills,
+  #story {
+    scroll-margin: var(--scroll-margin);
+  }
+
+  .skills {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .story {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  section {
+    margin: 0;
+    min-height: fit-content;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .about {
+    .stats {
+      width: 100%;
+      max-width: 1000px;
+      justify-content: space-evenly;
+      padding: 0 2.5rem;
+      height: 100%;
+
+      .stats-bar {
+        flex-direction: row;
+        gap: 2rem;
+        height: 100%;
+        align-items: end;
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@the7ofdiamonds/ui-ux": [
+        "./Packages/ui-ux/src"
+      ],
+      "@the7ofdiamonds/communications": [
+        "./Packages/communications/src"
+      ],
+      "@the7ofdiamonds/gateway": [
+        "./Packages/gateway/src"
+      ],
+      "@the7ofdiamonds/github-portfolio": [
+        "./Packages/github-portfolio/src"
+      ],
+      "@the7ofdiamonds/products-services": [
+        "./Packages/products-services/src"
+      ],
+      "@the7ofdiamonds/locations": [
+        "./Packages/locations/src"
+      ],
+      "@the7ofdiamonds/schedule": [
+        "./Packages/schedule/src"
+      ]
+    }
+  }
+}

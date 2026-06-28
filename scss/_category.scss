@@ -1,0 +1,18 @@
+section.category {
+  margin: 6rem 0;
+}
+
+.post-category {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.category-name:hover {
+  font-weight: 700;
+}
+
+.category-link {
+  text-decoration: none;
+}

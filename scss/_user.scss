@@ -1,0 +1,9 @@
+@use './_user-pic.scss';
+@use './_user-bio.scss';
+@use './_contact-bar.scss';
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}

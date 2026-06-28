@@ -1,0 +1,35 @@
+.title {
+  text-align: center;
+  text-transform: uppercase;
+
+  span {
+    text-transform: lowercase;
+  }
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 100%;
+  text-transform: uppercase;
+
+  img {
+    max-width: 5rem;
+    max-height: 5rem;
+  }
+}
+
+.page-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 100%;
+
+  img {
+    max-width: 5rem;
+    max-height: 5rem;
+  }
+}

@@ -1,0 +1,15 @@
+@use './_input.scss';
+
+section.add {
+  margin-top: 6.25rem;
+
+  main {
+    form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+}
