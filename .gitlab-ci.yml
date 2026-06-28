@@ -1,0 +1,8 @@
+workflow:
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_PIPELINE_SOURCE == "pipeline"
+    - when: never
+    
+include:
+  - component: $CI_SERVER_FQDN/components/pipelines/deploy_firebase_website@1.0.55
