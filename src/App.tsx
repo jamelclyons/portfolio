@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { Link, User, Skills, ContactMethods, Portfolio, Organization, Project, Repo } from '@the7ofdiamonds/ui-ux';
 import { ContactBar } from '@the7ofdiamonds/communications';
-import { getAuthenticatedUserAccount, getGitLabRepos } from '@the7ofdiamonds/github-portfolio';
+import { getAuthenticatedUserAccount, getGitLabRepos } from '@the7ofdiamonds/portfolio';
 
 const HeaderComponent = lazy(() => import('@the7ofdiamonds/ui-ux')
   .then(mod => ({ default: mod.HeaderComponent })));
@@ -19,21 +19,21 @@ const Resume = lazy(() => import('@the7ofdiamonds/communications')
 const UserPage = lazy(() => import('@the7ofdiamonds/communications')
   .then(mod => ({ default: mod.UserPage })));
 
-const Dashboard = lazy(() => import('@the7ofdiamonds/github-portfolio')
+const Dashboard = lazy(() => import('@the7ofdiamonds/portfolio')
   .then(mod => ({ default: mod.DashboardPage })));
-const OrganizationPage = lazy(() => import('@the7ofdiamonds/github-portfolio')
+const OrganizationPage = lazy(() => import('@the7ofdiamonds/portfolio')
   .then(mod => ({ default: mod.OrganizationPage })));
-const PortfolioPage = lazy(() => import('@the7ofdiamonds/github-portfolio')
+const PortfolioPage = lazy(() => import('@the7ofdiamonds/portfolio')
   .then(mod => ({ default: mod.PortfolioPage })));
-const ProjectPage = lazy(() => import('@the7ofdiamonds/github-portfolio')
+const ProjectPage = lazy(() => import('@the7ofdiamonds/portfolio')
   .then(mod => ({ default: mod.ProjectPage })));
-const ProjectsEditPage = lazy(() => import('@the7ofdiamonds/github-portfolio')
+const ProjectsEditPage = lazy(() => import('@the7ofdiamonds/portfolio')
   .then(mod => ({ default: mod.PortfolioEditPage })));
-const ProjectUpdate = lazy(() => import('@the7ofdiamonds/github-portfolio')
+const ProjectUpdate = lazy(() => import('@the7ofdiamonds/portfolio')
   .then(mod => ({ default: mod.ProjectEditPage })));
-const Search = lazy(() => import('@the7ofdiamonds/github-portfolio')
+const Search = lazy(() => import('@the7ofdiamonds/portfolio')
   .then(mod => ({ default: mod.SearchPage })));
-const SkillAdd = lazy(() => import('@the7ofdiamonds/github-portfolio')
+const SkillAdd = lazy(() => import('@the7ofdiamonds/portfolio')
   .then(mod => ({ default: mod.SkillAddPage })));
 
 const About = lazy(() => import('./views/About'));
@@ -44,6 +44,9 @@ const LoginPage = lazy(() => import('./views/LoginPage'));
 import ProtectedRoute from './ProtectedRoute';
 
 import { useAppSelector, useAppDispatch } from './model/hooks';
+
+import pkgJson from '../package.json';
+const appVersion = pkgJson.version;
 
 import userJson from '../user.json';
 import skillsJson from '../skills.json';
@@ -239,7 +242,7 @@ const App: React.FC = () => {
             <Route path="*" element={<NotFound />} />
           </Routes>
 
-          <FooterComponent name='Jamel C. Lyons'>
+          <FooterComponent name='Jamel C. Lyons' version={`v${appVersion}`}>
             {contactMethods && <ContactBar contactMethods={contactMethods} location={'footer'} />}
           </FooterComponent>
         </Suspense>

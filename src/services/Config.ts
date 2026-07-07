@@ -1,6 +1,6 @@
 import { setEnvVariables as setComEnvVariables } from '@the7ofdiamonds/communications';
 import { setEnvVariables as setGatewayVariables } from '@the7ofdiamonds/gateway';
-import { setEnvVariables as setGitPortVariables } from '@the7ofdiamonds/github-portfolio';
+import { setEnvVariables as setGitPortVariables } from '@the7ofdiamonds/portfolio';
 
 export const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,

@@ -1,27 +1,27 @@
-FROM node:22
+FROM node:22-alpine AS build
+
+ARG AUTH_TOKEN
+ENV AUTH_TOKEN=$AUTH_TOKEN
+
+RUN test -n "$AUTH_TOKEN" || (echo "Token is NOT set" && exit 1)
 
 WORKDIR /app
 
-COPY package.json ./
+ARG AUTH_TOKEN
+ENV AUTH_TOKEN=$AUTH_TOKEN
 
-COPY .npmrc .npmrc
+COPY package*.json ./
 
-COPY tsconfig.json ./
+RUN npm ci
 
-ARG GITHUB_TOKEN
-
-# Create npmrc dynamically (THIS is the key)
-RUN echo "@the7ofdiamonds:registry=https://npm.pkg.github.com/" > .npmrc \
- && echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" >> .npmrc
-
-# Install dependencies (hoist & link workspaces)
-RUN npm install --legacy-peer-deps
-
-# Copy app source only
 COPY . .
 
-RUN rm -f .npmrc
+RUN npm run build
 
-EXPOSE 3000
+FROM nginx:alpine
 
-CMD ["npm", "run", "build"]
+COPY --from=build /app/dist /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]

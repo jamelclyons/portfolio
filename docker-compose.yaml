@@ -6,15 +6,15 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        GITHUB_TOKEN: ${GITHUB_TOKEN}
+        AUTH_TOKEN: ${AUTH_TOKEN}
     platform: linux/arm64
-    container_name: jamelclyons
+    container_name: portfolio
+    image: jamelclyons/portfolio:latest
+    restart: unless-stopped
     ports:
-      - "3000:3000"
-    volumes:
-      - /app/node_modules
-      - ${PACKAGES_DIR}:/app/packages
+      - "8000:80"
     environment:
+      NODE_ENV: production
       CHOKIDAR_USEPOLLING: "true"
       RUNNING_IN_DOCKER: "true"
     networks:

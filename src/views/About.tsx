@@ -5,8 +5,8 @@ import { User, Skills, Portfolio } from '@the7ofdiamonds/ui-ux';
 
 import { UserPic } from '@the7ofdiamonds/communications';
 
-import { SkillsComponent, OrganizationsComponent } from '@the7ofdiamonds/github-portfolio';
-import { getRepoFile } from '@the7ofdiamonds/github-portfolio';
+import { SkillsComponent, OrganizationsComponent } from '@the7ofdiamonds/portfolio';
+import { getRepoFile } from '@the7ofdiamonds/portfolio';
 
 import { useAppDispatch } from '@/model/hooks';
 

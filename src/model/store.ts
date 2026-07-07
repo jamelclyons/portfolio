@@ -16,7 +16,7 @@ import {
   organizationSlice,
   databaseSlice,
   skillsSlice,
-} from '@the7ofdiamonds/github-portfolio';
+} from '@the7ofdiamonds/portfolio';
 
 import { authSlice } from '@the7ofdiamonds/gateway';
 

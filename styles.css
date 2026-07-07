@@ -1,23 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
 :root {
-  font-size: 12px;
+  font-size: 100%;
   --heading-font: 'Times New Roman', Times, serif;
-  --body-font: Helvetica;
+  --body-font: 'Oxanium', sans-serif;
 
   --button-background-color: black;
   --button-color: white;
   --button-background-color-secondary: white;
   --button-color-secondary: black;
-  --button-border-radius: 1.25rem;
-  
+
   --border-radius: 0.5rem;
+  --opacity: 0.85;
   --box-shadow: 4px 4px 10px gray;
   --header-background-color: white;
   --scroll-margin: 6rem;
+  --letter-spacing: 0.125em;
 
   --card-background-color: white;
   --card-color: black;
   --card-background-color-secondary: black;
   --card-color-secondary: white;
+
+  --user-card-background-color: black;
+  --user-card-color: white;
 
   --color-info: blue;
   --color-caution: yellow;
@@ -27,24 +39,148 @@
   --color-secondary: black;
   --color-text: black;
 
-  --opacity: 1;
+  --icon-color: black;
+  --link-color: black;
 
-  --user-card-background-color: black;
-  --user-card-color: white;
-  --user-card-background-color-secondary: white;
-  --user-card-color-secondary: black;
-  
   --footer-background-color: white;
 }
 
-@media (min-width: 480px) {
-  :root {
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body {
+  width: 100vw;
+  height: 100%;
+  position: relative;
+  font-family: var(--body-font);
+  word-spacing: 0.25em;
+}
+
+.body {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  letter-spacing: 0.5em;
+  margin-right: -0.5rem;
+  font-family: var(--heading-font);
+  word-wrap: break-word;
+}
+
+h4,
+h5,
+h6 {
+  font-family: var(--body-font);
+}
+
+h5,
+h6 {
+  letter-spacing: var(--letter-spacing);
+  font-weight: normal;
+  margin-right: 0;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+h5 {
+  font-size: 1.1rem;
+}
+
+h6 {
+  font-size: 1.05rem;
+}
+
+.title {
+  text-align: center;
+  text-transform: uppercase;
+
+  span {
+    text-transform: lowercase;
+  }
+}
+
+.header-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 100%;
+  text-transform: uppercase;
+
+  img {
+    max-width: 5rem;
+    max-height: 5rem;
+  }
+}
+
+.page-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 100%;
+
+  img {
+    max-width: 5rem;
+    max-height: 5rem;
+  }
+}
+
+a {
+  color: var(--link-color);
+}
+
+p {
+  font-family: var(--body-font);
+  line-height: 2em;
+}
+
+@media screen and (max-width: 400px) {
+  html {
     font-size: 14px;
   }
 }
 
-@media (min-width: 768px) {
-  :root {
-    font-size: 16px;
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  html {
+    font-size: 20px;
   }
 }

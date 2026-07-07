@@ -1,36 +1,29 @@
-name: portfolio
-
 services:
 
-  dev-website:
-    platform: linux/arm64
-    container_name: jamelclyons-dev
+  website:
     env_file: .env
-    hostname: ${URL}
     build:
-      context: ..
-      dockerfile: .devcontainer/Dockerfile
+      context: .
+      dockerfile: Dockerfile.staging
       args:
         AUTH_TOKEN: ${AUTH_TOKEN}
-    ports:
-      - "3000:3000"
+    platform: linux/arm64
+    container_name: portfolio-staging
+    image: jamelclyons/portfolio:staging
+    restart: unless-stopped
     volumes:
-      - ../:/app:cached
-      - node_modules:/app/node_modules
-      - ${PACKAGES_DIR}:/app/Packages
+      - ./package-lock.json:/app/package-lock.json
+    ports:
+      - "5002:5002"
     environment:
+      NODE_ENV: production
       CHOKIDAR_USEPOLLING: "true"
       RUNNING_IN_DOCKER: "true"
-      DEBUG: true          
-      NODE_ENV: development
     networks:
       - j.c.lyons_enterprises
       - seven_tech
       - orb
 
-volumes:
-  node_modules:
-  
 networks:
   j.c.lyons_enterprises:
     name: j.c.lyons_enterprises

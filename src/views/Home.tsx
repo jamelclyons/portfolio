@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { StatusBar, Section, Portfolio } from '@the7ofdiamonds/ui-ux';
 import { ContactComponent, UserIntroductionComponent, UserKnowledgeComponent } from '@the7ofdiamonds/communications';
-import { PortfolioComponent } from '@the7ofdiamonds/github-portfolio';
+import { PortfolioComponent } from '@the7ofdiamonds/portfolio';
 import { User, Skills } from '@the7ofdiamonds/ui-ux';
 
 import { useAppDispatch, useAppSelector } from '@/model/hooks';

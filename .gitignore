@@ -3,8 +3,6 @@ node_modules/
 
 *dist/
 
-*-lock.json
-
 *.pem
 
 # Ignore environment files
