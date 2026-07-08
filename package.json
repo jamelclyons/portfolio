@@ -42,7 +42,7 @@
     "gulp:build": "gulp build",
     "update-dev": "git push ssh://git@gitlab.jclyonsenterprises.com:2424/jamelclyons/portfolio.git",
     "update-prod": "git push git@github.com:jamelclyons/portfolio.git",
-    "refactor": "./refactor.sh && npm run update-prod",
+    "refactor": "./refactor.sh && npm run update-dev",
     "stage": "vite preview --host 0.0.0.0 --port 5002",
     "test": "vitest",
     "deploy": "firebase deploy --only hosting"
