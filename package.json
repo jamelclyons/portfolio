@@ -44,6 +44,7 @@
     "update-prod": "git push git@github.com:jamelclyons/portfolio.git",
     "refactor": "./refactor.sh && npm run update-prod",
     "stage": "vite preview --host 0.0.0.0 --port 5002",
+    "test": "vitest",
     "deploy": "firebase deploy --only hosting"
   },
   "dependencies": {
@@ -68,6 +69,7 @@
     "@types/node": "^22.16.5",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.1",
+    "@types/semver": "^7.7.1",
     "@vitejs/plugin-react": "^6.0.3",
     "firebase-tools": "^13.29.2",
     "gulp": "^4.0.2",
@@ -81,7 +83,8 @@
     "npm-run-all": "^4.1.5",
     "sass": "^1.69.5",
     "typescript": "^5.7.3",
-    "vite": "^8.1.2"
+    "vite": "^8.1.2",
+    "vitest": "^4.1.10"
   },
   "optionalDependencies": {
     "@rolldown/binding-darwin-arm64": "^1.1.4"
