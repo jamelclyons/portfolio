@@ -5,4 +5,4 @@ workflow:
     - when: never
     
 include:
-  - component: $CI_SERVER_FQDN/components/pipelines/deploy_firebase_website@1.0.62
+  - component: $CI_SERVER_FQDN/components/pipelines/deploy_firebase_website@1.0.63
