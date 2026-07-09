@@ -106,7 +106,8 @@ export default defineConfig(({ mode }) => {
         'localhost',
         '127.0.0.1',
         'jamelclyons.dev',
-        'founder.jclyonsenterprises.com'
+        'dev-founder.jclyonsenterprises.com',
+        'staging-founder.jclyonsenterprises.com'
       ],
       cors: true,
       fs: {

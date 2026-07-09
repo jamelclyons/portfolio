@@ -1,7 +1,10 @@
+name: portfolio
+
 services:
 
-  website:
+  staging-website:
     env_file: .env
+    hostname: ${URL}
     build:
       context: .
       dockerfile: Dockerfile.staging

@@ -3,8 +3,6 @@ name: portfolio
 services:
 
   dev-website:
-    platform: linux/arm64
-    container_name: jamelclyons-dev
     env_file: .env
     hostname: ${URL}
     build:
@@ -12,12 +10,16 @@ services:
       dockerfile: .devcontainer/Dockerfile
       args:
         AUTH_TOKEN: ${AUTH_TOKEN}
-    ports:
-      - "3000:3000"
+    platform: linux/arm64
+    container_name: portfolio-dev
+    image: jamelclyons/portfolio:dev
+    restart: unless-stopped
     volumes:
       - ../:/app:cached
       - node_modules:/app/node_modules
       - ${PACKAGES_DIR}:/app/Packages
+    ports:
+      - "3000:3000"
     environment:
       CHOKIDAR_USEPOLLING: "true"
       RUNNING_IN_DOCKER: "true"
