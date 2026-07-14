@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 
 import { LoadingComponent, ContentComponent, RepoContentQuery, Organizations } from '@the7ofdiamonds/ui-ux';
 import { User, Skills, Portfolio } from '@the7ofdiamonds/ui-ux';
-
 import { UserPic } from '@the7ofdiamonds/communications';
-
 import { SkillsComponent, OrganizationsComponent } from '@the7ofdiamonds/portfolio';
 import { getRepoFile } from '@the7ofdiamonds/portfolio';
+import { Locations } from '@the7ofdiamonds/locations';
+import { OfficeHoursComponent } from '@the7ofdiamonds/schedule';
 
 import { useAppDispatch } from '@/model/hooks';
 
@@ -88,57 +88,59 @@ const About: React.FC<AboutProps> = ({ user, skills, portfolio }) => {
   };
 
   return (
-    <>
-      <section className="about" id='top'>
-        <div className='stats'>
-          {(avatarURL || title) &&
-            <div className="stats-user">
-              {avatarURL && <UserPic url={avatarURL} />}
+    <section className="about" id='top'>
+      <div className='stats'>
+        {(avatarURL || title) &&
+          <div className="stats-user">
+            {avatarURL && <UserPic url={avatarURL} />}
 
-              {title && <h2 className="title">{title}</h2>}
-            </div>}
+            {title && <h2 className="title">{title}</h2>}
+          </div>}
 
-          <div className="stats-bar">
-            {portfolio && portfolio.projects.size > 0 &&
-              <div className="badge">
-                <div className="badge-number">
-                  <h5>{portfolio.projects.size}</h5>
-                </div>
-
-                <button onClick={handleProjects}>
-                  <h3 className="title">projects</h3>
-                </button>
-              </div>}
-
-            {skills && skills.count > 0 && <div className="badge">
+        <div className="stats-bar">
+          {portfolio && portfolio.projects.size > 0 &&
+            <div className="badge">
               <div className="badge-number">
-                <h5>{skills.count}</h5>
+                <h5>{portfolio.projects.size}</h5>
               </div>
 
-              <button onClick={handleSkills}>
-                <h3 className="title">skills</h3>
+              <button onClick={handleProjects}>
+                <h3 className="title">projects</h3>
               </button>
             </div>}
 
-            {user && user.story && <button onClick={handleStory}>
-              <h3 className="title">story</h3>
-            </button>}
+          {skills && skills.count > 0 && <div className="badge">
+            <div className="badge-number">
+              <h5>{skills.count}</h5>
+            </div>
 
-            {user && user.resume && <button onClick={handleResume}>
-              <h3 className="title">resume</h3>
-            </button>}
-          </div>
+            <button onClick={handleSkills}>
+              <h3 className="title">skills</h3>
+            </button>
+          </div>}
+
+          {user && user.story && <button onClick={handleStory}>
+            <h3 className="title">story</h3>
+          </button>}
+
+          {user && user.resume && <button onClick={handleResume}>
+            <h3 className="title">resume</h3>
+          </button>}
         </div>
+      </div>
 
-        {skills && <SkillsComponent skills={skills} />}
+      {skills && <SkillsComponent skills={skills} />}
 
-        {repoContentQuery ?
-          <ContentComponent title={'story'} query={repoContentQuery} dispatch={dispatch} getFile={getRepoFile} />
-          : <LoadingComponent page='Story' />}
+      {officeHours && <OfficeHoursComponent officeHours={officeHours} title={null} />}
 
-        {organizations && <OrganizationsComponent organizations={organizations} />}
-      </section>
-    </>
+      <Locations />
+
+      {repoContentQuery ?
+        <ContentComponent title={'story'} query={repoContentQuery} dispatch={dispatch} getFile={getRepoFile} />
+        : <LoadingComponent page='Story' />}
+
+      {organizations && <OrganizationsComponent organizations={organizations} />}
+    </section>
   );
 };
 

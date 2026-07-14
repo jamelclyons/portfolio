@@ -1,43 +1,8 @@
 import { defineConfig, PluginOption, loadEnv } from 'vite';
+
 import react from '@vitejs/plugin-react';
-// import Restart from 'vite-plugin-restart';
 
-import { exec } from 'child_process';
 import path from 'path';
-
-import rollupOptions from './rollup.config';
-
-const gulp = (): PluginOption => {
-  return {
-    name: 'run-gulp-tasks',
-    apply: 'serve',
-    configureServer(server) {
-      server.httpServer?.once('listening', () => {
-        return new Promise<void>((resolve) => {
-          console.log('Starting Gulp watch...');
-          const gulpProcess = exec('gulp watch');
-
-          gulpProcess.stdout?.on('data', (data) => {
-            console.log(`[Gulp]: ${data}`);
-          });
-
-          gulpProcess.stderr?.on('data', (data) => {
-            console.error(`[Gulp Error]: ${data}`);
-          });
-
-          gulpProcess.on('close', (code) => {
-            if (code !== 0) {
-              console.error(`Gulp watch process exited with code ${code}`);
-            } else {
-              console.log('Gulp watch process completed successfully.');
-            }
-            resolve();
-          });
-        });
-      });
-    },
-  };
-};
 
 /** @type {import('vite').UserConfig} */
 export default defineConfig(({ mode }) => {
@@ -70,14 +35,18 @@ export default defineConfig(({ mode }) => {
     const gateway = packagesRoot ? path.resolve(packagesRoot, 'gateway/src/index.ts') : null;
     const gitport = packagesRoot ? path.resolve(packagesRoot, 'portfolio/src/index.ts') : null;
     const types = packagesRoot ? path.resolve(packagesRoot, 'types/src/index.ts') : null;
+    const locations = packagesRoot ? path.resolve(packagesRoot, 'locations/src/index.ts') : null;
+    const schedule = packagesRoot ? path.resolve(packagesRoot, 'schedule/src/index.ts') : null;
 
-    packages = [uiux, communications, gateway, gitport, types].filter(Boolean) as string[];
+    packages = [uiux, communications, gateway, gitport, types, locations, schedule].filter(Boolean) as string[];
 
     localPackages = {
       ...(uiux && { '@the7ofdiamonds/ui-ux': uiux }),
       ...(communications && { '@the7ofdiamonds/communications': communications }),
       ...(gateway && { '@the7ofdiamonds/gateway': gateway }),
       ...(gitport && { '@the7ofdiamonds/portfolio': gitport }),
+      ...(locations && { '@the7ofdiamonds/locations': locations }),
+      ...(schedule && { '@the7ofdiamonds/schedule': schedule }),
     };
   }
 
@@ -97,7 +66,6 @@ export default defineConfig(({ mode }) => {
     },
     plugins: [
       react(),
-      gulp(),
     ],
     server: {
       host: '0.0.0.0',
