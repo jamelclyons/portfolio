@@ -24,8 +24,6 @@ services:
     container_name: portfolio-staging
     image: jamelclyons/portfolio:staging
     restart: unless-stopped
-    volumes:
-      - ./package-lock.json:/app/package-lock.json:cached
     ports:
       - "5002:5002"
     environment:

@@ -5,12 +5,9 @@ cd /app
 
 if [ ! -d "node_modules" ]; then
   echo "Installing dependencies..."
-  npm install
-else
-  echo "Updating dependencies..."
-  npm update -save
-
-  npm run build
+  npm ci
 fi
+
+npm run build
 
 npm run stage

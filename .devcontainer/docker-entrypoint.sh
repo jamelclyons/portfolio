@@ -5,8 +5,8 @@ set -e
 
 cd /app
 
-echo "Updating package.json to latest dependency versions..."
-npx npm-check-updates -u
+# echo "Updating package.json to latest dependency versions..."
+# npx npm-check-updates -u
 
 echo "Installing latest dependencies..."
 npm install
