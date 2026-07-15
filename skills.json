@@ -621,5 +621,17 @@
                 "url": "https://skillicons.dev/icons?i=githubactions",
                 "class_name": ""
             }
+        },
+        {
+            "id": "gitlab",
+            "type": "cicd",
+            "title": "GitLab",
+            "path": "cicd",
+            "image": {
+                "id": "gitlab",
+                "title": "GitLab",
+                "url": "https://skillicons.dev/icons?i=gitlab",
+                "class_name": ""
+            }
         }
     ]
