@@ -1,6 +1,5 @@
 FROM node:22
 
-ARG LAB_HOME
 ARG AUTH_TOKEN
 ENV AUTH_TOKEN=$AUTH_TOKEN
 ARG VITE_FIREBASE_API_KEY
@@ -26,9 +25,7 @@ ENV VITE_GITLAB_API=$VITE_GITLAB_API
 
 WORKDIR /app
 
-COPY ../../../Developer/Lab/website-env-validation.sh ./website-env-validation.sh
-
-RUN chmod +x ./website-env-validation.sh
+COPY docker-entrypoint.sh .
 
 COPY .npmrc .npmrc
 
@@ -36,13 +33,11 @@ COPY ./scss ./scss
 
 COPY ./src ./src
 
-COPY ./.firebaserc .
+COPY .firebaserc .
 
 COPY ./firebase.json .
 
 COPY ./index.html .
-
-COPY ./package-lock.json .
 
 COPY ./package.json .
 
@@ -50,18 +45,16 @@ COPY ./skills.json .
 
 COPY ./styles.css .
 
-COPY tsconfig.json .
+COPY ./tsconfig.json .
 
 COPY ./user.json .
 
 COPY ./vite.config.ts .
 
-RUN npm ci
-
-RUN rm -f .npmrc
+RUN npm install
 
 RUN npm run build
 
 EXPOSE 5002
 
-CMD ["npm", "run", "stage"]
+ENTRYPOINT ["/bin/bash", "docker-entrypoint.sh"]

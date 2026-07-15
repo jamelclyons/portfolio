@@ -3,11 +3,13 @@ set -e
 
 cd /app
 
-if [ ! -d "node_modules/@vitejs" ]; then
+if [ ! -d "node_modules" ]; then
   echo "Installing dependencies..."
-  npm install --legacy-peer-deps
+  npm install
 else
   echo "Dependencies already installed..."
+
+  npm update -save
 fi
 
 npm run dev
