@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { FooterComponent, LoadingComponent, HeaderComponent, User, Skills, ContactMethods, Portfolio, Organization, Project, Repo } from '@the7ofdiamonds/ui-ux';
 import { ContactBar, ContactPage, ResumePage, UserPage } from '@the7ofdiamonds/communications';
-import { DashboardPage, OrganizationPage, PortfolioPage, ProjectPage, PortfolioEditPage, ProjectEditPage, SkillAddPage, SearchPage, getAuthenticatedUserAccount, getGitLabRepos } from '@the7ofdiamonds/portfolio';
+import { DashboardPage, OrganizationPage, PortfolioPage, ProjectPage, PortfolioEditPage, ProjectEditPage, SkillAddPage, SearchPage, getAuthenticatedUserAccount, getGitLabRepos, getPortfolioDetails } from '@the7ofdiamonds/portfolio';
 
 import About from './views/About';
 import Home from './views/Home';
@@ -25,16 +25,20 @@ import { leftMenu, centerMenu, rightMenu } from './Menus';
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
 
+  const portfolio = new Portfolio();
+
   const { gitLabRepos } = useAppSelector((state) => state.gitLab);
+  const { portfolioObject } = useAppSelector((state) => state.portfolio);
   const { authenticatedUserObject } = useAppSelector((state) => state.user);
   const { skillsObject } = useAppSelector((state) => state.skill);
 
   const [user, setUser] = useState<User>(new User());
   const [avatarURL, setAvatarURL] = useState<string | null>(null);
   const [organization, setOrganization] = useState<Organization | null>(null);
-  const [portfolio, setPortfolio] = useState<Portfolio>(new Portfolio());
   const [skills, setSkills] = useState<Skills>(new Skills);
   const [contactMethods, setContactMethods] = useState<ContactMethods | null>();
+
+  const [hasDetails, setHasDetails] = useState<boolean>(false);
 
   useEffect(() => {
     const redirect = sessionStorage.redirect;
@@ -62,52 +66,56 @@ const App: React.FC = () => {
       authenticatedUser.fromJSON(userJson);
       authenticatedUser.setSkills(new Skills({ list: skillsJson }));
       setUser(authenticatedUser);
-
-      if (authenticatedUser?.portfolio || authenticatedUser?.organizations) {
-        if (authenticatedUser?.portfolio?.projects) {
-          Array.from(authenticatedUser?.portfolio?.projects).forEach((project) => {
-            setPortfolio(portfolio => {
-              portfolio.projects.add(project);
-              return portfolio;
-            });
-          })
-        }
-
-        authenticatedUser?.organizations?.list.forEach((org: Organization) => {
-          if (org?.portfolio?.projects) {
-            Array.from(org?.portfolio?.projects).forEach((project) => {
-              setPortfolio(portfolio => {
-                portfolio.projects.add(project);
-                return portfolio;
-              });
-            })
-          }
-        })
-      }
     }
   }, [authenticatedUserObject]);
 
-  useEffect(() => {
-    if (!gitLabRepos || gitLabRepos.length === 0) {
-      dispatch(getGitLabRepos());
-    }
-  }, [gitLabRepos]);
+  // useEffect(() => {
+  //   if (!gitLabRepos || gitLabRepos.length === 0) {
+  //     dispatch(getGitLabRepos());
+  //   }
+  // }, [gitLabRepos]);
+
+  // useEffect(() => {
+  //   if (gitLabRepos && gitLabRepos.length > 0) {
+  //     gitLabRepos.map(r => {
+  //       const repo = new Repo();
+  //       repo.fromGitLab(r);
+  //       const pj = new Project();
+  //       pj.fromRepo(repo);
+  //       setPortfolio(portfolio => {
+  //         portfolio.projects.add(pj);
+  //         return portfolio;
+  //       });
+  //     });
+
+  //   }
+  // }, [gitLabRepos]);
 
   useEffect(() => {
-    if (gitLabRepos && gitLabRepos.length > 0) {
-      gitLabRepos.map(r => {
-        const repo = new Repo();
-        repo.fromGitLab(r);
-        const pj = new Project();
-        pj.fromRepo(repo);
-        setPortfolio(portfolio => {
-          portfolio.projects.add(pj);
-          return portfolio;
-        });
-      });
+    if (user?.portfolio || user?.organizations) {
 
+      if (user?.portfolio?.projects && user.portfolio.projects.size > 0) {
+        portfolio.projects = new Set([...(portfolio.projects.size > 0 ? portfolio.projects : []), ...user?.portfolio?.projects]);
+      }
+
+      if (user?.organizations?.list && user.organizations.list.length > 0) {
+        user.organizations.list.forEach((org: Organization) => {
+          if (org?.portfolio?.projects && org.portfolio.projects.size > 0) {
+            portfolio.projects = new Set([...(portfolio.projects.size > 0 ? portfolio.projects : []), ...org.portfolio.projects]);
+          }
+        })
+      }
+
+      user.setPortfolio(portfolio)
     }
-  }, [gitLabRepos]);
+  }, [user]);
+
+  useEffect(() => {
+    if (user?.portfolio?.projects && user.portfolio.projects.size > 0 && !hasDetails) {
+      dispatch(getPortfolioDetails(user.portfolio))
+      setHasDetails(true)
+    }
+  }, [user?.portfolio?.projects.size]);
 
   useEffect(() => {
     if (user) {
@@ -166,19 +174,25 @@ const App: React.FC = () => {
     }
   }, [userJson]);
 
+  useEffect(() => {
+    if (portfolioObject) {
+      user.setPortfolio(new Portfolio(portfolioObject))
+    }
+  }, [portfolioObject]);
+
   return (
     <BrowserRouter>
       <HeaderComponent branding={'Jamel C. Lyons'} leftMenu={leftMenu} centerMenu={centerMenu} rightMenu={rightMenu} />
       <Suspense fallback={<LoadingComponent page='' />}>
         <Routes>
-          <Route path="/" element={<Home user={user} portfolio={portfolio} skills={skills} />} />
+          <Route path="/" element={<Home user={user} portfolio={user.portfolio} skills={skills} />} />
           <Route path="/about" element={<About user={user} skills={skills} portfolio={portfolio} />} />
           <Route path={`/user/${user.username}`} element={<About user={user} skills={skills} portfolio={portfolio} />} />
           <Route path="/organization/:login" element={<OrganizationPage skills={skills} organization={organization} />} />
           <Route path="/user/:login" element={<UserPage useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
           <Route path="/portfolio" element={<PortfolioPage account={user} portfolio={portfolio} skills={skills} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
           <Route path="/portfolio/:owner/:projectID" element={<ProjectPage account={user} portfolio={portfolio} skills={skills} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
-          <Route path="/skills/:type/:term" element={<SearchPage skills={skills} account={user} />} />
+          <Route path="/:taxonomy/:type/:term" element={<SearchPage skills={skills} account={user} />} />
           <Route path="/resume" element={<ResumePage user={user} />} />
           <Route path="/contact" element={<ContactPage account={user} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
 

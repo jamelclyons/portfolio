@@ -1,15 +1,14 @@
 #!/bin/bash
+# docker_entrypoint.sh
+
 set -e
 
 cd /app
 
-if [ ! -d "node_modules" ]; then
-  echo "Installing dependencies..."
-  npm install
-else
-  echo "Dependencies already installed..."
+echo "Updating package.json to latest dependency versions..."
+npx npm-check-updates -u
 
-  npm update -save
-fi
+echo "Installing latest dependencies..."
+npm install
 
-npm run dev
+exec npm run dev
