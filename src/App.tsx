@@ -25,8 +25,6 @@ import { leftMenu, centerMenu, rightMenu } from './Menus';
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
 
-  const portfolio = new Portfolio();
-
   const { gitLabRepos } = useAppSelector((state) => state.gitLab);
   const { portfolioObject } = useAppSelector((state) => state.portfolio);
   const { authenticatedUserObject } = useAppSelector((state) => state.user);
@@ -35,6 +33,7 @@ const App: React.FC = () => {
   const [user, setUser] = useState<User>(new User());
   const [avatarURL, setAvatarURL] = useState<string | null>(null);
   const [organization, setOrganization] = useState<Organization | null>(null);
+  const [portfolio, setPortfolio] = useState(new Portfolio());
   const [skills, setSkills] = useState<Skills>(new Skills);
   const [contactMethods, setContactMethods] = useState<ContactMethods | null>();
 
@@ -191,7 +190,7 @@ const App: React.FC = () => {
           <Route path="/organization/:login" element={<OrganizationPage skills={skills} organization={organization} />} />
           <Route path="/user/:login" element={<UserPage useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
           <Route path="/portfolio" element={<PortfolioPage account={user} portfolio={portfolio} skills={skills} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
-          <Route path="/portfolio/:owner/:projectID" element={<ProjectPage account={user} portfolio={portfolio} skills={skills} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
+          <Route path="/portfolio/:owner/:projectID" element={<ProjectPage account={user} portfolio={portfolio} setPortfolio={setPortfolio} skills={skills} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
           <Route path="/:taxonomy/:type/:term" element={<SearchPage skills={skills} account={user} />} />
           <Route path="/resume" element={<ResumePage user={user} />} />
           <Route path="/contact" element={<ContactPage account={user} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />

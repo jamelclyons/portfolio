@@ -5,10 +5,12 @@ set -e
 
 cd /app
 
-# echo "Updating package.json to latest dependency versions..."
-# npx npm-check-updates -u
+if [ -f .env ]; then
+  set -a
+  . ./.env
+  set +a
+fi
 
-echo "Installing latest dependencies..."
 npm install
 
 exec npm run dev
