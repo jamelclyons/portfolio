@@ -10,6 +10,8 @@ import { OfficeHoursComponent } from '@the7ofdiamonds/schedule';
 
 import { useAppDispatch } from '@/model/hooks';
 
+import styles from '../../scss/About.module.scss';
+
 interface AboutProps {
   user: User;
   skills: Skills | null;
@@ -88,19 +90,19 @@ const About: React.FC<AboutProps> = ({ user, skills, portfolio }) => {
   };
 
   return (
-    <section className="about" id='top'>
-      <div className='stats'>
+    <section className={styles.about} id='top'>
+      <div className={styles.stats}>
         {(avatarURL || title) &&
-          <div className="stats-user">
+          <div className={styles['stats-user']}>
             {avatarURL && <UserPic url={avatarURL} />}
 
-            {title && <h2 className="title">{title}</h2>}
+            {title && <h2 className={styles.title}>{title}</h2>}
           </div>}
 
-        <div className="stats-bar">
-          {portfolio && portfolio.projects.size > 0 &&
-            <div className="badge">
-              <div className="badge-number">
+        <div className={styles['stats-bar']}>
+          {portfolio && portfolio?.projects.size > 0 &&
+            <div className={styles.badge}>
+              <div className={styles['badge-number']}>
                 <h5>{portfolio.projects.size}</h5>
               </div>
 
@@ -109,8 +111,8 @@ const About: React.FC<AboutProps> = ({ user, skills, portfolio }) => {
               </button>
             </div>}
 
-          {skills && skills.count > 0 && <div className="badge">
-            <div className="badge-number">
+          {skills && skills?.count > 0 && <div className={styles.badge}>
+            <div className={styles['badge-number']}>
               <h5>{skills.count}</h5>
             </div>
 
@@ -119,19 +121,22 @@ const About: React.FC<AboutProps> = ({ user, skills, portfolio }) => {
             </button>
           </div>}
 
-          {user && user.story && <button onClick={handleStory}>
-            <h3 className="title">story</h3>
-          </button>}
+          {user &&
+            <>
+              {user?.story && <button onClick={handleStory}>
+                <h3 className="title">story</h3>
+              </button>}
 
-          {user && user.resume && <button onClick={handleResume}>
-            <h3 className="title">resume</h3>
-          </button>}
+              {user?.resume && <button onClick={handleResume}>
+                <h3 className="title">resume</h3>
+              </button>}
+            </>}
         </div>
       </div>
 
       {skills && <SkillsComponent skills={skills} />}
 
-      {officeHours && <OfficeHoursComponent officeHours={officeHours} title={null} />}
+      {/* {officeHours && <OfficeHoursComponent officeHours={officeHours} title={null} />} */}
 
       <Locations />
 

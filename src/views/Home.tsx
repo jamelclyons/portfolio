@@ -20,8 +20,6 @@ const Home: React.FC<HomeProps> = ({ user, portfolio, skills }) => {
   const { gitLabLoading, gitLabLoadingMessage } = useAppSelector((state) => state.gitLab);
   const { userLoading, userLoadingMessage } = useAppSelector((state) => state.user);
 
-  const [title, setTitle] = useState<string | null>(null);
-
   const [showStatusBar, setShowStatusBar] = useState<'show' | 'hide'>('hide');
   const [messageType, setMessageType] = useState<'info' | 'error' | 'success'>('info');
   const [message, setMessage] = useState<string | null>(null);
@@ -31,16 +29,10 @@ const Home: React.FC<HomeProps> = ({ user, portfolio, skills }) => {
   }, []);
 
   useEffect(() => {
-    if (user.name) {
-      setTitle(`${user.name}`)
+    if (user?.name) {
+      document.title = user.name;
     }
-  }, [user]);
-
-  useEffect(() => {
-    if (title) {
-      document.title = title;
-    }
-  }, [title]);
+  }, [user?.name]);
 
   useEffect(() => {
     if (userLoading || githubLoading || gitLabLoading) {

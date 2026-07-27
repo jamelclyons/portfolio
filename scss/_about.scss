@@ -4,6 +4,7 @@
 @use './_author.scss';
 @use './organizations';
 @use './_badge.scss';
+@use './section.scss';
 
 .mission-statement-card.card {
   flex-direction: row;
