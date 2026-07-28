@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { LoadingComponent, ContentComponent, RepoContentQuery, Organizations } from '@the7ofdiamonds/ui-ux';
-import { User, Skills, Portfolio } from '@the7ofdiamonds/ui-ux';
-import { UserPic } from '@the7ofdiamonds/communications';
+import { User, Section, Skills, Portfolio } from '@the7ofdiamonds/ui-ux';
+import { StatsComponent, StatsBarComponent, StatsUserComponent, StatsProjectsButton, StatsSkillsButton, UserStoryButton, UserResumeButton } from '@the7ofdiamonds/communications';
 import { SkillsComponent, OrganizationsComponent } from '@the7ofdiamonds/portfolio';
 import { getRepoFile } from '@the7ofdiamonds/portfolio';
 import { Locations } from '@the7ofdiamonds/locations';
@@ -20,10 +21,12 @@ interface AboutProps {
 
 const About: React.FC<AboutProps> = ({ user, skills, portfolio }) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  const [documentTitle, setDocumentTitle] = useState<string>('About');
+  const [documentTitle, setDocumentTitle] = useState<string | null>(null);
   const [avatarURL, setAvatarURL] = useState<string | null>(null);
   const [title, setTitle] = useState<string | null>(null);
+  const [hasStory, setHasStory] = useState<boolean>(true);
   const [repoContentQuery, setRepoContentQuery] = useState<RepoContentQuery | null>(null);
   const [organizations, setOrganizations] = useState<Organizations | null>(null);
 
@@ -36,10 +39,10 @@ const About: React.FC<AboutProps> = ({ user, skills, portfolio }) => {
   }, [documentTitle]);
 
   useEffect(() => {
-    if (user?.name) {
+    if (user && user?.name) {
       setDocumentTitle(`About - ${user.name}`);
     }
-  }, [user]);
+  }, [user?.name]);
 
   useEffect(() => {
     if (user?.avatarURL) {
@@ -54,6 +57,13 @@ const About: React.FC<AboutProps> = ({ user, skills, portfolio }) => {
   }, [user]);
 
   useEffect(() => {
+    const storyElement = document.getElementById('story');
+    if (user?.story || storyElement || repoContentQuery) {
+      setHasStory(storyElement)
+    }
+  }, [user?.story]);
+
+  useEffect(() => {
     if (user?.login) {
       setRepoContentQuery(new RepoContentQuery(user.login, user.login, 'story.md', ''))
     }
@@ -66,7 +76,7 @@ const About: React.FC<AboutProps> = ({ user, skills, portfolio }) => {
   }, [user]);
 
   const handleProjects = () => {
-    window.location.href = '/portfolio';
+    navigate('/portfolio')
   };
 
   const handleSkills = () => {
@@ -86,53 +96,24 @@ const About: React.FC<AboutProps> = ({ user, skills, portfolio }) => {
   };
 
   const handleResume = () => {
-    window.location.href = '/resume';
+    navigate('/resume');
   };
 
   return (
-    <section className={styles.about} id='top'>
-      <div className={styles.stats}>
-        {(avatarURL || title) &&
-          <div className={styles['stats-user']}>
-            {avatarURL && <UserPic url={avatarURL} />}
+    <Section>
+      <StatsComponent>
+        <StatsUserComponent user={user} />
 
-            {title && <h2 className={styles.title}>{title}</h2>}
-          </div>}
+        <StatsBarComponent>
+          <StatsProjectsButton portfolio={portfolio} handleClick={handleProjects} />
 
-        <div className={styles['stats-bar']}>
-          {portfolio && portfolio?.projects.size > 0 &&
-            <div className={styles.badge}>
-              <div className={styles['badge-number']}>
-                <h5>{portfolio.projects.size}</h5>
-              </div>
+          <StatsSkillsButton skills={skills} handleClick={handleSkills} />
 
-              <button onClick={handleProjects}>
-                <h3 className="title">projects</h3>
-              </button>
-            </div>}
+          {hasStory && <UserStoryButton user={user} handleClick={handleStory} />}
 
-          {skills && skills?.count > 0 && <div className={styles.badge}>
-            <div className={styles['badge-number']}>
-              <h5>{skills.count}</h5>
-            </div>
-
-            <button onClick={handleSkills}>
-              <h3 className="title">skills</h3>
-            </button>
-          </div>}
-
-          {user &&
-            <>
-              {user?.story && <button onClick={handleStory}>
-                <h3 className="title">story</h3>
-              </button>}
-
-              {user?.resume && <button onClick={handleResume}>
-                <h3 className="title">resume</h3>
-              </button>}
-            </>}
-        </div>
-      </div>
+          <UserResumeButton user={user} handleClick={handleResume} />
+        </StatsBarComponent>
+      </StatsComponent>
 
       {skills && <SkillsComponent skills={skills} />}
 
@@ -141,11 +122,11 @@ const About: React.FC<AboutProps> = ({ user, skills, portfolio }) => {
       <Locations />
 
       {repoContentQuery ?
-        <ContentComponent title={'story'} query={repoContentQuery} dispatch={dispatch} getFile={getRepoFile} />
+        <ContentComponent id={'story'} title={'story'} query={repoContentQuery} dispatch={dispatch} getFile={getRepoFile} />
         : <LoadingComponent page='Story' />}
 
       {organizations && <OrganizationsComponent organizations={organizations} />}
-    </section>
+    </Section>
   );
 };
 
