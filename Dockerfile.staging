@@ -29,8 +29,6 @@ COPY docker-entrypoint.sh .
 
 COPY .npmrc .npmrc
 
-COPY ./scss ./scss
-
 COPY ./src ./src
 
 COPY .firebaserc .

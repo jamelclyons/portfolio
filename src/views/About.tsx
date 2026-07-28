@@ -10,7 +10,7 @@ import { OfficeHoursComponent } from '@the7ofdiamonds/schedule';
 
 import { useAppDispatch } from '@/model/hooks';
 
-import styles from '../../scss/About.module.scss';
+import styles from './About.module.scss';
 
 interface AboutProps {
   user: User;
