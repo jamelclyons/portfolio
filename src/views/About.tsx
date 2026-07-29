@@ -105,11 +105,12 @@ const About: React.FC<AboutProps> = ({ user, skills, portfolio }) => {
         <StatsUserComponent user={user} />
 
         <StatsBarComponent>
+          {hasStory && <UserStoryButton user={user} handleClick={handleStory} />}
+
           <StatsProjectsButton portfolio={portfolio} handleClick={handleProjects} />
 
           <StatsSkillsButton skills={skills} handleClick={handleSkills} />
 
-          {hasStory && <UserStoryButton user={user} handleClick={handleStory} />}
 
           <UserResumeButton user={user} handleClick={handleResume} />
         </StatsBarComponent>

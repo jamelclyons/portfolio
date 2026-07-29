@@ -47,6 +47,10 @@ COPY ./styles.css .
 
 COPY ./tsconfig.json .
 
+COPY ./contacts.json .
+
+COPY ./organizations.json .
+
 COPY ./user.json .
 
 COPY ./vite.config.ts .

@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { FooterComponent, LoadingComponent, HeaderComponent, User, Skills, ContactMethods, Portfolio, Organization } from '@the7ofdiamonds/ui-ux';
+import { FooterComponent, LoadingComponent, HeaderComponent, User, Skills, ContactMethods, Portfolio, Organizations } from '@the7ofdiamonds/ui-ux';
 import { ContactBar, ContactPage, ResumePage, UserPage } from '@the7ofdiamonds/communications';
 import { DashboardPage, OrganizationPage, PortfolioPage, ProjectPage, PortfolioEditPage, ProjectEditPage, SkillAddPage, SearchPage, getAuthenticatedUserAccount, getPortfolioFromUser } from '@the7ofdiamonds/portfolio';
 
@@ -19,17 +19,19 @@ const appVersion = pkgJson.version;
 
 import userJson from '../user.json';
 import skillsJson from '../skills.json';
+import orgsJson from '../organizations.json';
+import contactsJson from '../contacts.json';
 
 import { leftMenu, centerMenu, rightMenu } from './Menus';
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
 
-  const { authenticatedUserObject } = useAppSelector((state) => state.user);
+  const { userObject, authenticatedUserObject } = useAppSelector((state) => state.user);
   const { portfolioObject, hasDetails } = useAppSelector((state) => state.portfolio);
 
   const [user, setUser] = useState<User>(new User());
-  const [organization, setOrganization] = useState<Organization | null>(null);
+  const [organizations, setOrganizations] = useState<Organizations | null>(null);
   const [portfolio, setPortfolio] = useState(null);
   const [skills, setSkills] = useState<Skills>(new Skills);
   const [contactMethods, setContactMethods] = useState<ContactMethods | null>(null);
@@ -43,9 +45,15 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    if (userObject) {
+      setUser(new User(userObject));
+    }
+  }, [userObject]);
+
+  useEffect(() => {
     if (!authenticatedUserObject) {
       dispatch(getAuthenticatedUserAccount(
-        { user: userJson, skills: skillsJson }
+        { user: userJson, skills: skillsJson, organizations: orgsJson, contact_methods: contactsJson }
       ));
     }
   }, [authenticatedUserObject]);
@@ -95,9 +103,9 @@ const App: React.FC = () => {
     }
   }, [user?.skills]);
 
-    useEffect(() => {
+  useEffect(() => {
     if (user?.organizations) {
-      setOrganization(user.organizations)
+      setOrganizations(user.organizations)
     }
   }, [user?.organizations]);
 
@@ -109,13 +117,13 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
-      <HeaderComponent branding={'Jamel C. Lyons'} leftMenu={leftMenu} centerMenu={centerMenu} rightMenu={rightMenu} />
+      <HeaderComponent branding={user.name} leftMenu={leftMenu} centerMenu={centerMenu} rightMenu={rightMenu} />
       <Suspense fallback={<LoadingComponent page='' />}>
         <Routes>
           <Route path="/" element={<Home user={user} portfolio={portfolio} skills={skills} />} />
           <Route path="/about" element={<About user={user} skills={skills} portfolio={portfolio} />} />
           <Route path={`/user/${user?.username}`} element={<About user={user} skills={skills} portfolio={portfolio} />} />
-          <Route path="/organization/:login" element={<OrganizationPage skills={skills} organization={organization} />} />
+          <Route path="/organization/:login" element={<OrganizationPage organizations={organizations} />} />
           <Route path="/user/:login" element={<UserPage useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
           <Route path="/portfolio" element={<PortfolioPage account={user} portfolio={portfolio} skills={skills} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
           <Route path="/portfolio/:owner/:projectID" element={<ProjectPage account={user} portfolio={portfolio} setPortfolio={setPortfolio} skills={skills} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
@@ -152,7 +160,7 @@ const App: React.FC = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
 
-        <FooterComponent name='Jamel C. Lyons' version={`v${appVersion}`}>
+        <FooterComponent name={user.name} version={`v${appVersion}`}>
           {contactMethods && <ContactBar contactMethods={contactMethods} location={'footer'} />}
         </FooterComponent>
       </Suspense>

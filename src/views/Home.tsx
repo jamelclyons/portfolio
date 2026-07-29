@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import type { Portfolio, User, Skills } from '@the7ofdiamonds/ui-ux';
 import { StatusBar, Section } from '@the7ofdiamonds/ui-ux';
 import { ContactComponent, UserIntroductionComponent, UserKnowledgeComponent } from '@the7ofdiamonds/communications';
-import { PortfolioComponent } from '@the7ofdiamonds/portfolio';
+import { PortfolioComponent, SkillsComponent, OrganizationsComponent } from '@the7ofdiamonds/portfolio';
 
 import { useAppDispatch, useAppSelector } from '@/model/hooks';
 
@@ -67,9 +67,13 @@ const Home: React.FC<HomeProps> = ({ user, portfolio, skills }) => {
 
       <UserKnowledgeComponent skills={skills} />
 
-      <PortfolioComponent portfolio={portfolio} skills={skills} />
+      <PortfolioComponent portfolio={portfolio} />
 
-      <ContactComponent title={null} dispatch={dispatch} />
+      <SkillsComponent skills={skills} />
+
+      <OrganizationsComponent organizations={user.organizations} />
+
+      <ContactComponent recipient={user.email} title={null} dispatch={dispatch} />
 
       {showStatusBar && message && <StatusBar show={showStatusBar} messageType={messageType} message={message} />}
     </Section>
