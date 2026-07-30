@@ -25,21 +25,23 @@ ENV VITE_GITLAB_API=$VITE_GITLAB_API
 
 WORKDIR /app
 
-COPY .npmrc .npmrc
-
-COPY ./scss ./scss
-
 COPY ./src ./src
 
 COPY .firebaserc .
+
+COPY .npmrc .npmrc
+
+COPY ./contacts.json .
 
 COPY ./firebase.json .
 
 COPY ./index.html .
 
-COPY ./package.json .
+COPY ./organizations.json .
 
 COPY ./package-lock.json .
+
+COPY ./package.json .
 
 COPY ./skills.json .
 
@@ -48,6 +50,8 @@ COPY ./styles.css .
 COPY ./tsconfig.json .
 
 COPY ./user.json .
+
+COPY ./vite-env.d.ts .
 
 COPY ./vite.config.ts .
 

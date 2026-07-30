@@ -11,8 +11,6 @@ import { OfficeHoursComponent } from '@the7ofdiamonds/schedule';
 
 import { useAppDispatch } from '@/model/hooks';
 
-import styles from './About.module.scss';
-
 interface AboutProps {
   user: User;
   skills: Skills | null;
@@ -23,9 +21,7 @@ const About: React.FC<AboutProps> = ({ user, skills, portfolio }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const [documentTitle, setDocumentTitle] = useState<string | null>(null);
-  const [avatarURL, setAvatarURL] = useState<string | null>(null);
-  const [title, setTitle] = useState<string | null>(null);
+  const [documentTitle, setDocumentTitle] = useState<string | null>('About');
   const [hasStory, setHasStory] = useState<boolean>(true);
   const [repoContentQuery, setRepoContentQuery] = useState<RepoContentQuery | null>(null);
   const [organizations, setOrganizations] = useState<Organizations | null>(null);
@@ -43,18 +39,6 @@ const About: React.FC<AboutProps> = ({ user, skills, portfolio }) => {
       setDocumentTitle(`About - ${user.name}`);
     }
   }, [user?.name]);
-
-  useEffect(() => {
-    if (user?.avatarURL) {
-      setAvatarURL(user.avatarURL)
-    }
-  }, [user]);
-
-  useEffect(() => {
-    if (user?.title) {
-      setTitle(user.title)
-    }
-  }, [user]);
 
   useEffect(() => {
     const storyElement = document.getElementById('story');
@@ -111,20 +95,19 @@ const About: React.FC<AboutProps> = ({ user, skills, portfolio }) => {
 
           <StatsSkillsButton skills={skills} handleClick={handleSkills} />
 
-
           <UserResumeButton user={user} handleClick={handleResume} />
         </StatsBarComponent>
       </StatsComponent>
+
+      {repoContentQuery ?
+        <ContentComponent id={'story'} title={'story'} query={repoContentQuery} dispatch={dispatch} getFile={getRepoFile} />
+        : <LoadingComponent page='Story' />}
 
       {skills && <SkillsComponent skills={skills} />}
 
       {/* {officeHours && <OfficeHoursComponent officeHours={officeHours} title={null} />} */}
 
       <Locations />
-
-      {repoContentQuery ?
-        <ContentComponent id={'story'} title={'story'} query={repoContentQuery} dispatch={dispatch} getFile={getRepoFile} />
-        : <LoadingComponent page='Story' />}
 
       {organizations && <OrganizationsComponent organizations={organizations} />}
     </Section>

@@ -20,6 +20,9 @@ const Home: React.FC<HomeProps> = ({ user, portfolio, skills }) => {
   const { gitLabLoading, gitLabLoadingMessage } = useAppSelector((state) => state.gitLab);
   const { userLoading, userLoadingMessage } = useAppSelector((state) => state.user);
 
+  const [email, setEmail] = useState<string | null>(null);
+  const [organizations, setOrganizations] = useState<Organizations | null>(null);
+
   const [showStatusBar, setShowStatusBar] = useState<'show' | 'hide'>('hide');
   const [messageType, setMessageType] = useState<'info' | 'error' | 'success'>('info');
   const [message, setMessage] = useState<string | null>(null);
@@ -33,6 +36,18 @@ const Home: React.FC<HomeProps> = ({ user, portfolio, skills }) => {
       document.title = user.name;
     }
   }, [user?.name]);
+
+  useEffect(() => {
+    if (user?.email) {
+      setEmail(user.email);
+    }
+  }, [user?.email]);
+
+  useEffect(() => {
+    if (user?.organizations) {
+      setOrganizations(user.organizations);
+    }
+  }, [user?.organizations]);
 
   useEffect(() => {
     if (userLoading || githubLoading || gitLabLoading) {
@@ -71,9 +86,9 @@ const Home: React.FC<HomeProps> = ({ user, portfolio, skills }) => {
 
       <SkillsComponent skills={skills} />
 
-      <OrganizationsComponent organizations={user.organizations} />
+      {organizations && <OrganizationsComponent organizations={organizations} />}
 
-      <ContactComponent recipient={user.email} title={null} dispatch={dispatch} />
+      {email && <ContactComponent recipient={email} title={null} dispatch={dispatch} />}
 
       {showStatusBar && message && <StatusBar show={showStatusBar} messageType={messageType} message={message} />}
     </Section>

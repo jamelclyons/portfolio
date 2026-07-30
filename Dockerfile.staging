@@ -25,21 +25,27 @@ ENV VITE_GITLAB_API=$VITE_GITLAB_API
 
 WORKDIR /app
 
-COPY docker-entrypoint.sh .
+COPY ./src ./src
+
+COPY ./tests ./tests
+
+COPY ./docker-entrypoint.sh .
+
+COPY .firebaserc .
 
 COPY .npmrc .npmrc
 
-COPY ./src ./src
-
-COPY .firebaserc .
+COPY ./contacts.json .
 
 COPY ./firebase.json .
 
 COPY ./index.html .
 
-COPY ./package.json .
+COPY ./organizations.json .
 
 COPY ./package-lock.json .
+
+COPY ./package.json .
 
 COPY ./skills.json .
 
@@ -47,17 +53,17 @@ COPY ./styles.css .
 
 COPY ./tsconfig.json .
 
-COPY ./contacts.json .
-
-COPY ./organizations.json .
-
 COPY ./user.json .
+
+COPY ./vite-env.d.ts .
 
 COPY ./vite.config.ts .
 
 RUN npm ci
 
 RUN npm run build
+
+RUN rm -rf .npmrc
 
 EXPOSE 5002
 
