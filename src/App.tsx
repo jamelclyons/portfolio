@@ -1,13 +1,12 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { FooterComponent, LoadingComponent, HeaderComponent, User, Skills, ContactMethods, Portfolio, Organizations } from '@the7ofdiamonds/ui-ux';
+import { FooterComponent, LoadingComponent, HeaderComponent, User, Skills, ContactMethods, Portfolio, Organizations, NotFound } from '@the7ofdiamonds/ui-ux';
 import { ContactBar, ContactPage, ResumePage, UserPage } from '@the7ofdiamonds/communications';
-import { DashboardPage, OrganizationPage, PortfolioPage, ProjectPage, PortfolioEditPage, ProjectEditPage, SkillAddPage, SearchPage, getAuthenticatedUserAccount, getPortfolioFromUser } from '@the7ofdiamonds/portfolio';
+import { DashboardPage, OrganizationPage, PortfolioPage, ProjectPage, PortfolioEditPage, ProjectEditPage, SkillAddPage, SearchPage, getAuthenticatedUserAccount, getPortfolioFromUser, SkillsComponent } from '@the7ofdiamonds/portfolio';
 
 import About from './views/About';
 import Home from './views/Home';
-import NotFound from './views/NotFound';
 import LoginPage from './views/LoginPage';
 
 import ProtectedRoute from './ProtectedRoute';
@@ -35,6 +34,7 @@ const App: React.FC = () => {
   const [portfolio, setPortfolio] = useState(null);
   const [skills, setSkills] = useState<Skills>(new Skills);
   const [contactMethods, setContactMethods] = useState<ContactMethods | null>(null);
+  const [name, setName] = useState<string | null>(null);
 
   useEffect(() => {
     const redirect = sessionStorage.redirect;
@@ -86,6 +86,12 @@ const App: React.FC = () => {
   }, [authenticatedUserObject]);
 
   useEffect(() => {
+    if (user?.name) {
+      setName(user.name)
+    }
+  }, [user?.name]);
+
+  useEffect(() => {
     if (portfolioObject) {
       setPortfolio(new Portfolio(portfolioObject))
     }
@@ -117,12 +123,11 @@ const App: React.FC = () => {
 
   return (
     <BrowserRouter>
-      <HeaderComponent branding={user.name} leftMenu={leftMenu} centerMenu={centerMenu} rightMenu={rightMenu} />
+      <HeaderComponent branding={name} leftMenu={leftMenu} centerMenu={centerMenu} rightMenu={rightMenu} />
       <Suspense fallback={<LoadingComponent page='' />}>
         <Routes>
           <Route path="/" element={<Home user={user} portfolio={portfolio} skills={skills} />} />
           <Route path="/about" element={<About user={user} skills={skills} portfolio={portfolio} />} />
-          <Route path={`/user/${user?.username}`} element={<About user={user} skills={skills} portfolio={portfolio} />} />
           <Route path="/organization/:login" element={<OrganizationPage organizations={organizations} />} />
           <Route path="/user/:login" element={<UserPage useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
           <Route path="/portfolio" element={<PortfolioPage account={user} portfolio={portfolio} skills={skills} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
@@ -130,6 +135,9 @@ const App: React.FC = () => {
           <Route path="/:taxonomy/:type/:term" element={<SearchPage account={user} portfolio={portfolio} skills={skills} />} />
           <Route path="/resume" element={<ResumePage user={user} />} />
           <Route path="/contact" element={<ContactPage account={user} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
+
+          <Route path="/login" element={<LoginPage useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} eiifcbnugcndhhfcbdbbecdljjtiuekedejkbvubnfnh
+          />} />
 
           <Route path="/admin/dashboard" element={
             <ProtectedRoute>
@@ -155,12 +163,12 @@ const App: React.FC = () => {
             </ProtectedRoute>
           } />
 
-          <Route path="/login" element={<LoginPage />} />
-
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound title={'Page Not Found'}>
+            {skills && <SkillsComponent skills={skills} />}
+          </NotFound>} />
         </Routes>
 
-        <FooterComponent name={user.name} version={`v${appVersion}`}>
+        <FooterComponent name={name} version={`v${appVersion}`}>
           {contactMethods && <ContactBar contactMethods={contactMethods} location={'footer'} />}
         </FooterComponent>
       </Suspense>

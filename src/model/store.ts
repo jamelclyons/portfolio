@@ -18,7 +18,7 @@ import {
   skillsSlice,
 } from '@the7ofdiamonds/portfolio';
 
-import { authSlice } from '@the7ofdiamonds/gateway';
+import { authSlice, loginSlice } from '@the7ofdiamonds/gateway';
 
 export const store = configureStore({
   reducer: {
@@ -32,7 +32,8 @@ export const store = configureStore({
     gitLab: gitLabSlice.reducer,
     update: updateSlice.reducer,
     user: userSlice.reducer,
-    auth: authSlice.reducer,
+    authSlice: authSlice.reducer,
+    login: loginSlice.reducer,
     database: databaseSlice.reducer,
     organization: organizationSlice.reducer,
     account: accountSlice.reducer,
