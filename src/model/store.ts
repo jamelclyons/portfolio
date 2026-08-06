@@ -32,12 +32,12 @@ export const store = configureStore({
     gitLab: gitLabSlice.reducer,
     update: updateSlice.reducer,
     user: userSlice.reducer,
-    authSlice: authSlice.reducer,
+    auth: authSlice.reducer,
     login: loginSlice.reducer,
     database: databaseSlice.reducer,
     organization: organizationSlice.reducer,
     account: accountSlice.reducer,
-    skill: skillsSlice.reducer,
+    skills: skillsSlice.reducer,
   },
 });
 

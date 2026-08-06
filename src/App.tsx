@@ -3,11 +3,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { FooterComponent, LoadingComponent, HeaderComponent, User, Skills, ContactMethods, Portfolio, Organizations, NotFound } from '@the7ofdiamonds/ui-ux';
 import { ContactBar, ContactPage, ResumePage, UserPage } from '@the7ofdiamonds/communications';
-import { DashboardPage, OrganizationPage, PortfolioPage, ProjectPage, PortfolioEditPage, ProjectEditPage, SkillAddPage, SearchPage, getAuthenticatedUserAccount, getPortfolioFromUser, SkillsComponent } from '@the7ofdiamonds/portfolio';
+import { OrganizationPage, PortfolioPage, ProjectPage, PortfolioEditPage, ProjectEditPage, SkillAddPage, SearchPage, getAuthenticatedUserAccount, getPortfolioFromUser, SkillsComponent } from '@the7ofdiamonds/portfolio';
 
 import About from './views/About';
 import Home from './views/Home';
 import LoginPage from './views/LoginPage';
+import DashboardPage from './views/DashboardPage';
 
 import ProtectedRoute from './ProtectedRoute';
 
@@ -131,36 +132,35 @@ const App: React.FC = () => {
           <Route path="/organization/:login" element={<OrganizationPage organizations={organizations} />} />
           <Route path="/user/:login" element={<UserPage useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
           <Route path="/portfolio" element={<PortfolioPage account={user} portfolio={portfolio} skills={skills} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
-          <Route path="/portfolio/:owner/:projectID" element={<ProjectPage account={user} portfolio={portfolio} setPortfolio={setPortfolio} skills={skills} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
+          <Route path="/portfolio/:owner/:projectID" element={<ProjectPage account={user} portfolio={portfolio} skills={skills} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
           <Route path="/:taxonomy/:type/:term" element={<SearchPage account={user} portfolio={portfolio} skills={skills} />} />
           <Route path="/resume" element={<ResumePage user={user} />} />
           <Route path="/contact" element={<ContactPage account={user} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
 
-          <Route path="/login" element={<LoginPage useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} eiifcbnugcndhhfcbdbbecdljjtiuekedejkbvubnfnh
-          />} />
+          <Route path="/login" element={<LoginPage useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
 
           <Route path="/admin/dashboard" element={
-            <ProtectedRoute>
-              <DashboardPage />
-            </ProtectedRoute>
-          } />
-
-          <Route path="/admin/update/portfolio" element={
-            <ProtectedRoute>
-              <PortfolioEditPage user={user} />
-            </ProtectedRoute>
-          } />
-
-          <Route path="/admin/update/project/:login/:projectID" element={
-            <ProtectedRoute>
-              <ProjectEditPage user={user} />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <DashboardPage useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />
+            // </ProtectedRoute>
           } />
 
           <Route path="/admin/add/skill" element={
-            <ProtectedRoute>
-              <SkillAddPage />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+              <SkillAddPage useAppSelector={useAppSelector} useAppDispatch={useAppDispatch}/>
+            // {/* </ProtectedRoute> */}
+          } />
+
+          <Route path="/admin/update/portfolio" element={
+            // <ProtectedRoute>
+              <PortfolioEditPage portfolio={portfolio} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch}/>
+            // {/* </ProtectedRoute> */}
+          } />
+
+          <Route path="/admin/update/project/:owner/:projectID" element={
+            // <ProtectedRoute>
+              <ProjectEditPage portfolio={portfolio} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch}/>
+            // </ProtectedRoute>
           } />
 
           <Route path="*" element={<NotFound title={'Page Not Found'}>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import type { Portfolio, User, Skills } from '@the7ofdiamonds/ui-ux';
+import type { Organizations, Portfolio, User, Skills } from '@the7ofdiamonds/ui-ux';
 import { StatusBar, Section } from '@the7ofdiamonds/ui-ux';
 import { ContactComponent, UserIntroductionComponent, UserKnowledgeComponent } from '@the7ofdiamonds/communications';
 import { PortfolioComponent, SkillsComponent, OrganizationsComponent } from '@the7ofdiamonds/portfolio';

@@ -1,5 +1,13 @@
-section.login {
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  width: 100%;
+  padding: 0 1rem;
+  gap: 2rem;
+  margin-top: 6.25rem;
+  flex: 1;
 }
 
 .providers {
@@ -8,15 +16,4 @@ section.login {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-}
-
-@media screen and (min-width: 1675px) {
-  // Add this to each section specifically
-  section {
-    justify-content: center;
-  }
-
-  .providers {
-    flex-direction: row;
-  }
 }
