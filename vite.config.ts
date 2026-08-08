@@ -10,6 +10,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
 
   let packages: string[] = [];
+  let packagesDir: string[] = [];
   let localPackages: Record<string, string> = {};
 
   if (isDev) {
@@ -30,16 +31,26 @@ export default defineConfig(({ mode }) => {
       console.warn('PACKAGES_DIR environment variable is not set. Local packages will not be resolved.');
     }
 
-    const uiux = packagesRoot ? path.resolve(packagesRoot, 'ui-ux/src/index.ts') : null;
-    const communications = packagesRoot ? path.resolve(packagesRoot, 'communications/src/index.ts') : null;
-    const gateway = packagesRoot ? path.resolve(packagesRoot, 'gateway/src/index.ts') : null;
-    const gitport = packagesRoot ? path.resolve(packagesRoot, 'portfolio/src/index.ts') : null;
-    const types = packagesRoot ? path.resolve(packagesRoot, 'types/src/index.ts') : null;
-    const locations = packagesRoot ? path.resolve(packagesRoot, 'locations/src/index.ts') : null;
-    const schedule = packagesRoot ? path.resolve(packagesRoot, 'schedule/src/index.ts') : null;
+    const uiuxDir = packagesRoot ? path.resolve(packagesRoot, 'ui-ux') : null;
+    const communicationsDir = packagesRoot ? path.resolve(packagesRoot, 'communications') : null;
+    const gatewayDir = packagesRoot ? path.resolve(packagesRoot, 'gateway') : null;
+    const gitportDir = packagesRoot ? path.resolve(packagesRoot, 'portfolio') : null;
+    const typesDir = packagesRoot ? path.resolve(packagesRoot, 'types') : null;
+    const locationsDir = packagesRoot ? path.resolve(packagesRoot, 'locations') : null;
+    const scheduleDir = packagesRoot ? path.resolve(packagesRoot, 'schedule') : null;
+
+    packagesDir = packagesRoot ? [uiuxDir, communicationsDir, gatewayDir, gitportDir, typesDir, locationsDir, scheduleDir].filter(Boolean) as string[] : [];
+
+    const uiux = uiuxDir ? path.resolve(uiuxDir, 'src/index.ts') : null;
+    const communications = communicationsDir ? path.resolve(communicationsDir, 'src/index.ts') : null;
+    const gateway = gatewayDir ? path.resolve(gatewayDir, 'src/index.ts') : null;
+    const gitport = gitportDir ? path.resolve(gitportDir, 'src/index.ts') : null;
+    const types = typesDir ? path.resolve(typesDir, 'src/index.ts') : null;
+    const locations = locationsDir ? path.resolve(locationsDir, 'src/index.ts') : null;
+    const schedule = scheduleDir ? path.resolve(scheduleDir, 'src/index.ts') : null;
 
     packages = [uiux, communications, gateway, gitport, types, locations, schedule].filter(Boolean) as string[];
-
+    console.log(packagesDir)
     localPackages = {
       ...(uiux && { '@the7ofdiamonds/ui-ux': uiux }),
       ...(communications && { '@the7ofdiamonds/communications': communications }),
@@ -82,6 +93,7 @@ export default defineConfig(({ mode }) => {
         allow: [__dirname, ...packages],
       },
       watch: {
+        allow: packagesDir,
         ignored: ['./src/services/firebase/functions'],
         usePolling: true,
         interval: 300,
