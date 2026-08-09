@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 
-import type { Organizations, Portfolio, User, Skills } from '@the7ofdiamonds/ui-ux';
+import type { Portfolio, User, Skills } from '@the7ofdiamonds/ui-ux';
 import { StatusBar, Section } from '@the7ofdiamonds/ui-ux';
-import { ContactComponent, UserIntroductionComponent, UserKnowledgeComponent } from '@the7ofdiamonds/communications';
-import { PortfolioComponent, SkillsComponent, OrganizationsComponent } from '@the7ofdiamonds/portfolio';
+import { UserIntroductionComponent, UserKnowledgeComponent } from '@the7ofdiamonds/communications';
+import { PortfolioComponent } from '@the7ofdiamonds/portfolio';
 
-import { useAppDispatch, useAppSelector } from '@/model/hooks';
+import { useAppSelector } from '@/model/hooks';
 
 interface HomeProps {
   user: User;
@@ -14,14 +14,9 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ user, portfolio, skills }) => {
-  const dispatch = useAppDispatch();
-
   const { githubLoading, githubLoadingMessage } = useAppSelector((state) => state.github);
   const { gitLabLoading, gitLabLoadingMessage } = useAppSelector((state) => state.gitLab);
   const { userLoading, userLoadingMessage } = useAppSelector((state) => state.user);
-
-  const [email, setEmail] = useState<string | null>(null);
-  const [organizations, setOrganizations] = useState<Organizations | null>(null);
 
   const [showStatusBar, setShowStatusBar] = useState<'show' | 'hide'>('hide');
   const [messageType, setMessageType] = useState<'info' | 'error' | 'success'>('info');
@@ -36,18 +31,6 @@ const Home: React.FC<HomeProps> = ({ user, portfolio, skills }) => {
       document.title = user.name;
     }
   }, [user?.name]);
-
-  useEffect(() => {
-    if (user?.email) {
-      setEmail(user.email);
-    }
-  }, [user?.email]);
-
-  useEffect(() => {
-    if (user?.organizations) {
-      setOrganizations(user.organizations);
-    }
-  }, [user?.organizations]);
 
   useEffect(() => {
     if (userLoading || githubLoading || gitLabLoading) {
@@ -83,12 +66,6 @@ const Home: React.FC<HomeProps> = ({ user, portfolio, skills }) => {
       <UserKnowledgeComponent skills={skills} />
 
       <PortfolioComponent portfolio={portfolio} />
-
-      <SkillsComponent skills={skills} />
-
-      {organizations && <OrganizationsComponent organizations={organizations} />}
-
-      {email && <ContactComponent recipient={email} title={null} dispatch={dispatch} />}
 
       {showStatusBar && message && <StatusBar show={showStatusBar} messageType={messageType} message={message} />}
     </Section>

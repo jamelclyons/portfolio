@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { FooterComponent, LoadingComponent, HeaderComponent, User, Skills, ContactMethods, Portfolio, Organizations, NotFound } from '@the7ofdiamonds/ui-ux';
+import { FooterComponent, LoadingComponent, HeaderComponent, User, Skills, ContactMethods, Portfolio, Organizations, NotFound, SiteMapComponent } from '@the7ofdiamonds/ui-ux';
 import { ContactBar, ContactPage, ResumePage, UserPage } from '@the7ofdiamonds/communications';
 import { OrganizationPage, PortfolioPage, ProjectPage, PortfolioEditPage, ProjectEditPage, SkillAddPage, SearchPage, getAuthenticatedUserAccount, getPortfolioFromUser, SkillsComponent } from '@the7ofdiamonds/portfolio';
 
@@ -22,7 +22,7 @@ import skillsJson from '../skills.json';
 import orgsJson from '../organizations.json';
 import contactsJson from '../contacts.json';
 
-import { leftMenu, centerMenu, rightMenu } from './Menus';
+import { leftMenu, centerMenu, rightMenu, siteMap } from './Menus';
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -147,19 +147,19 @@ const App: React.FC = () => {
 
           <Route path="/admin/add/skill" element={
             // <ProtectedRoute>
-              <SkillAddPage useAppSelector={useAppSelector} useAppDispatch={useAppDispatch}/>
+            <SkillAddPage useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />
             // {/* </ProtectedRoute> */}
           } />
 
           <Route path="/admin/update/portfolio" element={
             // <ProtectedRoute>
-              <PortfolioEditPage portfolio={portfolio} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch}/>
+            <PortfolioEditPage portfolio={portfolio} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />
             // {/* </ProtectedRoute> */}
           } />
 
           <Route path="/admin/update/project/:owner/:projectID" element={
             // <ProtectedRoute>
-              <ProjectEditPage portfolio={portfolio} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch}/>
+            <ProjectEditPage portfolio={portfolio} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />
             // </ProtectedRoute>
           } />
 
@@ -170,6 +170,7 @@ const App: React.FC = () => {
 
         <FooterComponent name={name} version={`v${appVersion}`}>
           {contactMethods && <ContactBar contactMethods={contactMethods} location={'footer'} />}
+          <SiteMapComponent siteMap={siteMap} />
         </FooterComponent>
       </Suspense>
     </BrowserRouter >

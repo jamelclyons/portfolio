@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { LoadingComponent, ContentComponent, RepoContentQuery, Organizations } from '@the7ofdiamonds/ui-ux';
 import { User, Section, Skills, Portfolio } from '@the7ofdiamonds/ui-ux';
-import { StatsComponent, StatsBarComponent, StatsUserComponent, StatsProjectsButton, StatsSkillsButton, UserStoryButton, UserResumeButton } from '@the7ofdiamonds/communications';
+import { UserComponent, StatsComponent, StatsBarComponent, StatsProjectsButton, StatsSkillsButton, UserStoryButton, UserResumeButton } from '@the7ofdiamonds/communications';
 import { SkillsComponent, OrganizationsComponent } from '@the7ofdiamonds/portfolio';
 import { getRepoFile } from '@the7ofdiamonds/portfolio';
 import { Locations } from '@the7ofdiamonds/locations';
@@ -85,9 +85,9 @@ const About: React.FC<AboutProps> = ({ user, skills, portfolio }) => {
 
   return (
     <Section>
-      <StatsComponent>
-        <StatsUserComponent user={user} />
+      <UserComponent user={user} />
 
+      <StatsComponent>
         <StatsBarComponent>
           {hasStory && <UserStoryButton user={user} handleClick={handleStory} />}
 
