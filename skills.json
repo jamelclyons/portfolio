@@ -3,7 +3,7 @@
             "id": "application",
             "type": "project_type",
             "title": "Application",
-            "path": "project-type",
+            "path": "/skill/project-type/application",
             "image": {
                 "id": "application",
                 "title": "Application",
@@ -16,7 +16,7 @@
             "id": "package",
             "type": "project_type",
             "title": "Package",
-            "path": "project-type",
+            "path": "/skill/project-type/package",
             "image": {
                 "id": "package",
                 "title": "Package",
@@ -29,7 +29,7 @@
             "id": "plugin",
             "type": "project_type",
             "title": "Plugin",
-            "path": "project-type",
+            "path": "/skill/project-type/plugin",
             "image": {
                 "id": "plugin",
                 "title": "Plugin",
@@ -42,7 +42,7 @@
             "id": "theme",
             "type": "project_type",
             "title": "Theme",
-            "path": "project-type",
+            "path": "/skill/project-type/theme",
             "image": {
                 "id": "theme",
                 "title": "Theme",
@@ -55,7 +55,7 @@
             "id": "platform",
             "type": "project_type",
             "title": "platform",
-            "path": "project-type",
+            "path": "/skill/project-type/platform",
             "image": {
                 "id": "platform",
                 "title": "platform",
@@ -68,7 +68,7 @@
             "id": "cicd",
             "type": "project_type",
             "title": "CI/CD",
-            "path": "project-type",
+            "path": "/skill/project-type/cicd",
             "image": {
                 "id": "cicd",
                 "title": "Continuous Integration/Continuous Deployment",
@@ -81,7 +81,7 @@
             "id": "api",
             "type": "project_type",
             "title": "API",
-            "path": "project-type",
+            "path": "/skill/project-type/api",
             "image": {
                 "id": "api",
                 "title": "Application Programming Interface",
@@ -94,7 +94,7 @@
             "id": "css",
             "type": "language",
             "title": "CSS",
-            "path": "language",
+            "path": "/skill/language/css",
             "image": {
                 "id": "css",
                 "title": "CSS",
@@ -107,7 +107,7 @@
             "id": "hack",
             "type": "language",
             "title": "Hack",
-            "path": "language",
+            "path": "/skill/language/hack",
             "image": {
                 "id": "hack",
                 "title": "Hack",
@@ -120,7 +120,7 @@
             "id": "html",
             "type": "language",
             "title": "HTML",
-            "path": "language",
+            "path": "/skill/language/html",
             "image": {
                 "id": "html",
                 "title": "HTML",
@@ -133,7 +133,7 @@
             "id": "java",
             "type": "language",
             "title": "Java",
-            "path": "language",
+            "path": "/skill/language/java",
             "image": {
                 "id": "java",
                 "title": "Java",
@@ -146,7 +146,7 @@
             "id": "javascript",
             "type": "language",
             "title": "JavaScript",
-            "path": "language",
+            "path": "/skill/language/javascript",
             "image": {
                 "id": "javascript",
                 "title": "JavaScript",
@@ -159,7 +159,7 @@
             "id": "jquery",
             "type": "language",
             "title": "jQuery",
-            "path": "language",
+            "path": "/skill/language/jquery",
             "image": {
                 "id": "jquery",
                 "title": "jQuery",
@@ -172,7 +172,7 @@
             "id": "mysql",
             "type": "database",
             "title": "MySQL",
-            "path": "database",
+            "path": "/skill/database/mysql",
             "image": {
                 "id": "mysql",
                 "title": "MySQL",
@@ -185,7 +185,7 @@
             "id": "php",
             "type": "language",
             "title": "PHP",
-            "path": "language",
+            "path": "/skill/language/php",
             "image": {
                 "id": "php",
                 "title": "PHP",
@@ -198,7 +198,7 @@
             "id": "python",
             "type": "language",
             "title": "Python",
-            "path": "language",
+            "path": "/skill/language/python",
             "image": {
                 "id": "python",
                 "title": "Python",
@@ -211,7 +211,7 @@
             "id": "shell",
             "type": "language",
             "title": "PowerShell",
-            "path": "language",
+            "path": "/skill/language/shell",
             "image": {
                 "id": "shell",
                 "title": "PowerShell",
@@ -224,7 +224,7 @@
             "id": "swift",
             "type": "language",
             "title": "Swift",
-            "path": "language",
+            "path": "/skill/language/swift",
             "image": {
                 "id": "swift",
                 "title": "Swift",
@@ -237,7 +237,7 @@
             "id": "typescript",
             "type": "language",
             "title": "TypeScript",
-            "path": "language",
+            "path": "/skill/language/typescript",
             "image": {
                 "id": "typescript",
                 "title": "TypeScript",
@@ -250,7 +250,7 @@
             "id": "angular",
             "type": "framework",
             "title": "Angular",
-            "path": "framework",
+            "path": "/skill/framework/angular",
             "image": {
                 "id": "angular",
                 "title": "Angular",
@@ -263,7 +263,7 @@
             "id": "react",
             "type": "framework",
             "title": "React",
-            "path": "framework",
+            "path": "/skill/framework/react",
             "image": {
                 "id": "react",
                 "title": "React",
@@ -276,7 +276,7 @@
             "id": "redux",
             "type": "framework",
             "title": "Redux",
-            "path": "framework",
+            "path": "/skill/framework/redux",
             "image": {
                 "id": "redux",
                 "title": "Redux",
@@ -291,7 +291,7 @@
             "id": "spring",
             "type": "framework",
             "title": "Spring Boot",
-            "path": "framework",
+            "path": "/skill/framework/spring",
             "image": {
                 "id": "spring",
                 "title": "Spring Boot",
@@ -304,7 +304,7 @@
             "id": "adobe-illustrator",
             "type": "software",
             "title": "Adobe Illustrator",
-            "path": "software",
+            "path": "/skill/software/adobe-illustrator",
             "image": {
                 "id": "adobe-illustrator",
                 "title": "Adobe Illustrator",
@@ -317,7 +317,7 @@
             "id": "adobe-photoshop",
             "type": "software",
             "title": "Adobe Photoshop",
-            "path": "software",
+            "path": "/skill/software/adobe-photoshop",
             "image": {
                 "id": "adobe-photoshop",
                 "title": "Adobe Photoshop",
@@ -330,7 +330,7 @@
             "id": "adobe-xd",
             "type": "software",
             "title": "Adobe XD",
-            "path": "software",
+            "path": "/skill/software/adobe-xd",
             "image": {
                 "id": "adobe-xd",
                 "title": "Adobe XD",
@@ -343,7 +343,7 @@
             "id": "docker",
             "type": "cicd",
             "title": "Docker",
-            "path": "cicd",
+            "path": "/skill/cicd/docker",
             "image": {
                 "id": "docker",
                 "title": "Docker",
@@ -356,7 +356,7 @@
             "id": "express",
             "type": "framework",
             "title": "Express",
-            "path": "framework",
+            "path": "/skill/framework/express",
             "image": {
                 "id": "express",
                 "title": "Express",
@@ -369,7 +369,7 @@
             "id": "figma",
             "type": "software",
             "title": "Figma",
-            "path": "software",
+            "path": "/skill/software/figma",
             "image": {
                 "id": "figma",
                 "title": "Figma",
@@ -382,7 +382,7 @@
             "id": "jenkins",
             "type": "cicd",
             "title": "Jenkins",
-            "path": "cicd",
+            "path": "/skill/cicd/jenkins",
             "image": {
                 "id": "jenkins",
                 "title": "Jenkins",
@@ -395,7 +395,7 @@
             "id": "kafka",
             "type": "technology",
             "title": "Kafka",
-            "path": "technology",
+            "path": "/skill/technology/kafka",
             "image": {
                 "id": "kafka",
                 "title": "Kafka",
@@ -408,7 +408,7 @@
             "id": "kubernetes",
             "type": "platform",
             "title": "Kubernetes",
-            "path": "platform",
+            "path": "/skill/platform/kubernetes",
             "image": {
                 "id": "kubernetes",
                 "title": "Kubernetes",
@@ -421,7 +421,7 @@
             "id": "maven",
             "type": "builder",
             "title": "Maven",
-            "path": "builder",
+            "path": "/skill/builder/maven",
             "image": {
                 "id": "maven",
                 "title": "Maven",
@@ -434,7 +434,7 @@
             "id": "nginx",
             "type": "server",
             "title": "NGINX",
-            "path": "server",
+            "path": "/skill/server/nginx",
             "image": {
                 "id": "nginx",
                 "title": "NGINX",
@@ -447,7 +447,7 @@
             "id": "nginx-proxy-manager",
             "type": "server",
             "title": "NGINX Proxy Manager",
-            "path": "server",
+            "path": "/skill/server/nginx-proxy-manager",
             "image": {
                 "id": "nginx-proxy-manager",
                 "title": "NGINX Proxy Manager",
@@ -460,7 +460,7 @@
             "id": "postman",
             "type": "software",
             "title": "Postman",
-            "path": "software",
+            "path": "/skill/software/postman",
             "image": {
                 "id": "postman",
                 "title": "Postman",
@@ -473,7 +473,7 @@
             "id": "redis",
             "type": "database",
             "title": "Redis",
-            "path": "database",
+            "path": "/skill/database/redis",
             "image": {
                 "id": "redis",
                 "title": "Redis",
@@ -486,7 +486,7 @@
             "id": "sass",
             "type": "builder",
             "title": "Sass",
-            "path": "builder",
+            "path": "/skill/builder/sass",
             "image": {
                 "id": "sass",
                 "title": "Sass",
@@ -499,7 +499,7 @@
             "id": "selenium",
             "type": "cicd",
             "title": "Selenium",
-            "path": "cicd",
+            "path": "/skill/cicd/selenium",
             "image": {
                 "id": "selenium",
                 "title": "Selenium",
@@ -512,7 +512,7 @@
             "id": "sqlite",
             "type": "database",
             "title": "SQLite",
-            "path": "database",
+            "path": "/skill/database/sqlite",
             "image": {
                 "id": "sqlite",
                 "title": "SQLite",
@@ -525,7 +525,7 @@
             "id": "vite",
             "type": "builder",
             "title": "Vite",
-            "path": "builder",
+            "path": "/skill/builder/vite",
             "image": {
                 "id": "vite",
                 "title": "Vite",
@@ -538,7 +538,7 @@
             "id": "webpack",
             "type": "builder",
             "title": "Webpack",
-            "path": "builder",
+            "path": "/skill/builder/webpack",
             "image": {
                 "id": "webpack",
                 "title": "Webpack",
@@ -551,7 +551,7 @@
             "id": "wordpress",
             "type": "platform",
             "title": "WordPress",
-            "path": "platform",
+            "path": "/skill/platform/wordpress",
             "image": {
                 "id": "wordpress",
                 "title": "WordPress",
@@ -564,7 +564,7 @@
             "id": "nodejs",
             "type": "platform",
             "title": "NodeJS",
-            "path": "platform",
+            "path": "/skill/platform/nodejs",
             "image": {
                 "id": "nodejs",
                 "title": "NodeJS",
@@ -577,7 +577,7 @@
             "id": "graphql",
             "type": "database",
             "title": "GraphQL",
-            "path": "database",
+            "path": "/skill/database/graphql",
             "image": {
                 "id": "graphql",
                 "title": "GraphQL",
@@ -590,7 +590,7 @@
             "id": "firebase",
             "type": "platform",
             "title": "Firebase",
-            "path": "platform",
+            "path": "/skill/platform/firebase",
             "image": {
                 "id": "firebase",
                 "title": "Firebase",
@@ -602,7 +602,7 @@
             "id": "github",
             "type": "cicd",
             "title": "GitHub",
-            "path": "cicd",
+            "path": "/skill/cicd/github",
             "image": {
                 "id": "github",
                 "title": "GitHub",
@@ -614,7 +614,7 @@
             "id": "github-actions",
             "type": "cicd",
             "title": "GitHub Actions",
-            "path": "cicd",
+            "path": "/skill/cicd/github-actions",
             "image": {
                 "id": "github-actions",
                 "title": "GitHub Actions",
@@ -626,7 +626,7 @@
             "id": "gitlab",
             "type": "cicd",
             "title": "GitLab",
-            "path": "cicd",
+            "path": "/skill/cicd/gitlab",
             "image": {
                 "id": "gitlab",
                 "title": "GitLab",

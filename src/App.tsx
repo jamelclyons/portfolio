@@ -133,7 +133,7 @@ const App: React.FC = () => {
           <Route path="/user/:login" element={<UserPage useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
           <Route path="/portfolio" element={<PortfolioPage account={user} portfolio={portfolio} skills={skills} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
           <Route path="/portfolio/:owner/:projectID" element={<ProjectPage account={user} portfolio={portfolio} skills={skills} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
-          <Route path="/:taxonomy/:type/:term" element={<SearchPage account={user} portfolio={portfolio} skills={skills} />} />
+          <Route path="/:taxonomy/:type/:term" element={<SearchPage account={user} portfolio={portfolio} setPortfolio={setPortfolio} skills={skills} />} />
           <Route path="/resume" element={<ResumePage user={user} />} />
           <Route path="/contact" element={<ContactPage account={user} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
 
