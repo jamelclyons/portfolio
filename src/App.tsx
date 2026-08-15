@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { FooterComponent, LoadingComponent, HeaderComponent, User, Skills, ContactMethods, Portfolio, Organizations, NotFound, SiteMapComponent } from '@the7ofdiamonds/ui-ux';
+import { FooterComponent, LoadingComponent, HeaderComponent, User, Skills, ContactMethods, Portfolio, Organizations, NotFound, SiteMapComponent, VersionComponent } from '@the7ofdiamonds/ui-ux';
 import { ContactBar, ContactPage, ResumePage, UserPage } from '@the7ofdiamonds/communications';
 import { OrganizationPage, PortfolioPage, ProjectPage, PortfolioEditPage, ProjectEditPage, SkillAddPage, SearchPage, getAuthenticatedUserAccount, getPortfolioFromUser, SkillsComponent } from '@the7ofdiamonds/portfolio';
 
@@ -171,6 +171,7 @@ const App: React.FC = () => {
         <FooterComponent name={name} version={`v${appVersion}`}>
           {contactMethods && <ContactBar contactMethods={contactMethods} location={'footer'} />}
           <SiteMapComponent siteMap={siteMap} />
+          <VersionComponent version={`v${appVersion}`} />
         </FooterComponent>
       </Suspense>
     </BrowserRouter >
