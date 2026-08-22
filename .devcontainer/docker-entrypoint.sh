@@ -1,5 +1,5 @@
 #!/bin/bash
-# docker_entrypoint.sh
+# docker-entrypoint.sh
 
 set -e
 

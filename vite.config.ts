@@ -50,7 +50,7 @@ export default defineConfig(({ mode }) => {
     const schedule = scheduleDir ? path.resolve(scheduleDir, 'src/index.ts') : null;
 
     packages = [uiux, communications, gateway, gitport, types, locations, schedule].filter(Boolean) as string[];
-    console.log(packagesDir)
+
     localPackages = {
       ...(uiux && { '@the7ofdiamonds/ui-ux': uiux }),
       ...(communications && { '@the7ofdiamonds/communications': communications }),
