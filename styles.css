@@ -11,6 +11,12 @@
   --heading-font: 'Times New Roman', Times, serif;
   --body-font: 'Oxanium', sans-serif;
 
+  --font-color: black;
+  --font-color-secondary: white;
+
+  --background-color: white;
+  --background-color-secondary: black;
+
   --button-background-color: black;
   --button-color: white;
   --button-background-color-secondary: white;
