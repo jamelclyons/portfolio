@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { FooterComponent, LoadingComponent, HeaderComponent, User, Skills, ContactMethods, Portfolio, Organizations, NotFound, SiteMapComponent, VersionComponent } from '@the7ofdiamonds/ui-ux';
+import { FooterComponent, LoadingComponent, HeaderComponent, User, Skills, ContactMethods, Portfolio, Organizations, NotFound, SiteMapComponent, CopyrightComponent, VersionComponent } from '@the7ofdiamonds/ui-ux';
 import { ContactBar, ContactPage, ResumePage, UserPage } from '@the7ofdiamonds/communications';
 import { OrganizationPage, PortfolioPage, ProjectPage, PortfolioEditPage, ProjectEditPage, SkillAddPage, SearchPage, getAuthenticatedUserAccount, getPortfolioFromUser, SkillsComponent } from '@the7ofdiamonds/portfolio';
 
@@ -15,8 +15,6 @@ import ProtectedRoute from './ProtectedRoute';
 import { useAppSelector, useAppDispatch } from './model/hooks';
 
 import pkgJson from '../package.json';
-const appVersion = pkgJson.version;
-
 import userJson from '../user.json';
 import skillsJson from '../skills.json';
 import orgsJson from '../organizations.json';
@@ -28,14 +26,17 @@ const App: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const { userObject, authenticatedUserObject } = useAppSelector((state) => state.user);
-  const { portfolioObject, hasDetails } = useAppSelector((state) => state.portfolio);
+  const { portfolioObject } = useAppSelector((state) => state.portfolio);
 
   const [user, setUser] = useState<User>(new User());
   const [organizations, setOrganizations] = useState<Organizations | null>(null);
   const [portfolio, setPortfolio] = useState(null);
   const [skills, setSkills] = useState<Skills>(new Skills);
   const [contactMethods, setContactMethods] = useState<ContactMethods | null>(null);
+
   const [name, setName] = useState<string | null>(null);
+  const [appVersion, setAppVersion] = useState<string | null>(null);
+  const [startingYear, setStartingYear] = useState<number | null>(null);
 
   useEffect(() => {
     const redirect = sessionStorage.redirect;
@@ -99,12 +100,6 @@ const App: React.FC = () => {
   }, [portfolioObject]);
 
   useEffect(() => {
-    if (portfolioObject && hasDetails) {
-      setPortfolio(new Portfolio(portfolioObject))
-    }
-  }, [hasDetails, portfolioObject]);
-
-  useEffect(() => {
     if (user?.skills) {
       setSkills(user.skills);
     }
@@ -121,6 +116,18 @@ const App: React.FC = () => {
       setContactMethods(user.contactMethods)
     }
   }, [user?.contactMethods]);
+
+  useEffect(() => {
+    if (user?.startingYear && !Number.isNaN(user?.startingYear)) {
+      setStartingYear(user.startingYear)
+    }
+  }, [user?.startingYear]);
+
+  useEffect(() => {
+    if (pkgJson?.version) {
+      setAppVersion(`v${pkgJson.version}`);
+    }
+  }, []);
 
   return (
     <BrowserRouter>
@@ -140,27 +147,27 @@ const App: React.FC = () => {
           <Route path="/login" element={<LoginPage useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />} />
 
           <Route path="/admin/dashboard" element={
-            // <ProtectedRoute>
-            <DashboardPage useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />
-            // </ProtectedRoute>
+            <ProtectedRoute>
+              <DashboardPage useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />
+            </ProtectedRoute>
           } />
 
           <Route path="/admin/add/skill" element={
-            // <ProtectedRoute>
-            <SkillAddPage useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />
-            // {/* </ProtectedRoute> */}
+            <ProtectedRoute>
+              <SkillAddPage useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />
+            </ProtectedRoute>
           } />
 
           <Route path="/admin/update/portfolio" element={
-            // <ProtectedRoute>
-            <PortfolioEditPage portfolio={portfolio} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />
-            // {/* </ProtectedRoute> */}
+            <ProtectedRoute>
+              <PortfolioEditPage portfolio={portfolio} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />
+            </ProtectedRoute>
           } />
 
           <Route path="/admin/update/project/:owner/:projectID" element={
-            // <ProtectedRoute>
-            <ProjectEditPage portfolio={portfolio} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />
-            // </ProtectedRoute>
+            <ProtectedRoute>
+              <ProjectEditPage portfolio={portfolio} useAppSelector={useAppSelector} useAppDispatch={useAppDispatch} />
+            </ProtectedRoute>
           } />
 
           <Route path="*" element={<NotFound title={'Page Not Found'}>
@@ -171,7 +178,8 @@ const App: React.FC = () => {
         <FooterComponent name={name} version={`v${appVersion}`}>
           {contactMethods && <ContactBar contactMethods={contactMethods} location={'footer'} />}
           <SiteMapComponent siteMap={siteMap} />
-          <VersionComponent version={`v${appVersion}`} />
+          {name && <CopyrightComponent startingYear={startingYear} name={name} />}
+          {appVersion && <VersionComponent version={appVersion} />}
         </FooterComponent>
       </Suspense>
     </BrowserRouter >

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
+import type { Visibility, MessageType } from '@the7ofdiamonds/ui-ux';
+
 import type { Portfolio, User, Skills } from '@the7ofdiamonds/ui-ux';
-import { StatusBar, Section } from '@the7ofdiamonds/ui-ux';
+import { Modal, StatusBar, Section } from '@the7ofdiamonds/ui-ux';
 import { UserIntroductionComponent, UserKnowledgeComponent } from '@the7ofdiamonds/communications';
 import { PortfolioComponent } from '@the7ofdiamonds/portfolio';
 
@@ -14,12 +16,12 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({ user, portfolio, skills }) => {
-  const { githubLoading, githubLoadingMessage } = useAppSelector((state) => state.github);
-  const { gitLabLoading, gitLabLoadingMessage } = useAppSelector((state) => state.gitLab);
-  const { userLoading, userLoadingMessage } = useAppSelector((state) => state.user);
+  const { githubLoading, githubLoadingMessage, githubErrorMessage } = useAppSelector((state) => state.github);
+  const { gitLabLoading, gitLabLoadingMessage, gitLabErrorMessage } = useAppSelector((state) => state.gitLab);
+  const { userLoading, userLoadingMessage, userErrorMessage } = useAppSelector((state) => state.user);
 
-  const [showStatusBar, setShowStatusBar] = useState<'show' | 'hide'>('hide');
-  const [messageType, setMessageType] = useState<'info' | 'error' | 'success'>('info');
+  const [showStatusBar, setShowStatusBar] = useState<Visibility>('show');
+  const [messageType, setMessageType] = useState<MessageType>('info');
   const [message, setMessage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -34,30 +36,33 @@ const Home: React.FC<HomeProps> = ({ user, portfolio, skills }) => {
 
   useEffect(() => {
     if (userLoading || githubLoading || gitLabLoading) {
-      setShowStatusBar('show')
       setMessageType('info');
     }
   }, [userLoading, githubLoading, gitLabLoading]);
 
   useEffect(() => {
-    if (!userLoadingMessage || !githubLoadingMessage || !gitLabLoadingMessage) {
+    if (userLoadingMessage || githubLoadingMessage || gitLabLoadingMessage) {
+      setShowStatusBar('show')
+      if (userLoadingMessage) setMessage(userLoadingMessage);
+      if (githubLoadingMessage) setMessage(githubLoadingMessage);
+      if (gitLabLoadingMessage) setMessage(gitLabLoadingMessage);
+    } else {
       setMessage(null);
+      setShowStatusBar('hide')
     }
   }, [userLoadingMessage, githubLoadingMessage, gitLabLoadingMessage]);
 
   useEffect(() => {
-    if (userLoadingMessage) {
-      setMessage(userLoadingMessage);
+    if (userErrorMessage || githubErrorMessage || gitLabErrorMessage) {
+      setShowStatusBar('show')
+      if (userErrorMessage) setMessage(userErrorMessage);
+      if (githubErrorMessage) setMessage(githubErrorMessage);
+      if (gitLabErrorMessage) setMessage(gitLabErrorMessage);
+    } else {
+      setMessage(null);
+      setShowStatusBar('hide')
     }
-
-    if (githubLoadingMessage) {
-      setMessage(githubLoadingMessage);
-    }
-
-    if (gitLabLoadingMessage) {
-      setMessage(gitLabLoadingMessage);
-    }
-  }, [userLoadingMessage, githubLoadingMessage, gitLabLoadingMessage]);
+  }, [userErrorMessage, githubErrorMessage, gitLabErrorMessage]);
 
   return (
     <Section>
@@ -67,7 +72,9 @@ const Home: React.FC<HomeProps> = ({ user, portfolio, skills }) => {
 
       <PortfolioComponent portfolio={portfolio} />
 
-      {showStatusBar && message && <StatusBar show={showStatusBar} messageType={messageType} message={message} />}
+      <Modal show={showStatusBar} messageType={messageType}>
+        <StatusBar show={showStatusBar} messageType={messageType} message={message} />
+      </Modal>
     </Section>
   );
 }
